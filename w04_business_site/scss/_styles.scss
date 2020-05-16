@@ -1,22 +1,28 @@
 body {
   font-family: $textFont;
+  font-size: $fontSizeSmall;
 }
 
 h1 {
+  background-color: $backgroundColorDark;
   text-align: center;
   font-family: $headerFont;
-
+  color: white;
+  letter-spacing: .10em;
+  font-size: $fontSizeLarge;
 }
 
 h2 {
   text-align: center;
   font-family: $secondaryFont;
+  font-size: $fontSizeMedium;
 }
 
 .body-group {
   
   margin: auto;
 }
+
 
 .header-group {
   max-width: 100%;
@@ -40,7 +46,7 @@ div {
 
 
 .hero-image {
-  background-image: url("https://picsum.photos/1920/500");
+  background-image: url("../images/Rose-and-blue-twisted-bezel-3.jpg");
   background-color: #cccccc;
   height: 500px;
   background-position: center;
@@ -53,12 +59,12 @@ div {
 .hero-image > h1 {
   padding: 15px;
   margin-top: 0px;
-  font-size: 2.5em;
+  font-size: $fontSizeLarge;
 }
 
 nav {
   position: absolute;
-  top: 15%;
+  top: 87%;
   width: 100%;
   background-color: $backgroundColorDark;
   text-align: center;
@@ -66,8 +72,8 @@ nav {
   align-items: center;
   justify-content: space-around; }
 
-nav li .current {
-  background-color: #005381; }
+#current {
+  background-color: $backgroundColorLight; }
 
 .navigation {
   display: flex;

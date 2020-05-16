@@ -1,44 +1,42 @@
 body {
   font-family: "Bree Serif", serif;
-}
+  font-size: 1em; }
 
 h1 {
+  background-color: #002a45;
   text-align: center;
   font-family: "Lobster", cursive;
-}
+  color: white;
+  letter-spacing: .10em;
+  font-size: 2.5em; }
 
 h2 {
   text-align: center;
   font-family: "Roboto", sans-serif;
-}
+  font-size: 1.5em; }
 
 .body-group {
-  margin: auto;
-}
+  margin: auto; }
 
 .header-group {
-  max-width: 100%;
-}
+  max-width: 100%; }
 
 .content-group {
   max-width: 80%;
-  margin: auto;
-}
+  margin: auto; }
 
 .footer-content {
   margin-top: 30px;
   background-color: rgba(92, 197, 224, 0.8);
   text-align: center;
   padding: 5px;
-  max-width: 100%;
-}
+  max-width: 100%; }
 
 div {
-  margin-top: 40px;
-}
+  margin-top: 40px; }
 
 .hero-image {
-  background-image: url("https://picsum.photos/1920/500");
+  background-image: url("../images/Rose-and-blue-twisted-bezel-3.jpg");
   background-color: #cccccc;
   height: 500px;
   background-position: center;
@@ -46,41 +44,34 @@ div {
   background-size: cover;
   position: relative;
   margin-bottom: 30px;
-  margin-top: 0px;
-}
+  margin-top: 0px; }
 
 .hero-image > h1 {
   padding: 15px;
   margin-top: 0px;
-  font-size: 2.5em;
-}
+  font-size: 2.5em; }
 
 nav {
   position: absolute;
-  top: 15%;
+  top: 87%;
   width: 100%;
   background-color: #002a45;
   text-align: center;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-}
+  justify-content: space-around; }
 
-nav li .current {
-  background-color: #005381;
-}
+#current {
+  background-color: rgba(92, 197, 224, 0.8); }
 
 .navigation {
-  display: flex;
-}
+  display: flex; }
 
 .navigation li:first-child {
-  display: block;
-}
+  display: block; }
 
 .navigation li {
-  display: block;
-}
+  display: block; }
 
 .navigation a {
   display: block;
@@ -88,19 +79,16 @@ nav li .current {
   padding: .50rem;
   text-align: center;
   text-decoration: none;
-  margin-left: 15px;
-}
+  margin-left: 15px; }
 
 .navigation .active {
   background-color: #56acdd;
-  border-radius: 5px;
-}
+  border-radius: 5px; }
 
 .navigation a:hover {
   color: #000;
   background-color: #56acdd;
   font-weight: 700;
-  border-radius: 5px;
-}
+  border-radius: 5px; }
 
 /*# sourceMappingURL=main.css.map */

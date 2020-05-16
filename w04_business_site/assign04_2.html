@@ -8,9 +8,101 @@
   <title>Darrin Fry's Week 4 Business Page</title>
 
   <style>
+    .gallery-group {
+      max-width: 98%;
+      margin: .1rem auto; 
+      display: grid; 
+      grid-template-columns: 1fr 1fr 1fr; 
+      justify-content: center;
+    }
+    img {
+      max-width: 95%;
+      height: auto;
+    }
+   
+    figure > img {
+      transition: 1.0s;
+    }
+    img:hover {
+      transform: scale(2);
+    }
+    figcaption {
+      width: 80%;
+    }
+    .span-stand-out {
+      color: blue;
+    }
     
+    #dazzle {
+      font-size: 2.5em;
+      font-family: 'Lobster', cursive;
+      letter-spacing: .20em;
+    }
   </style>
 </head>
 
+<body class="body-group">
 
+  <header  class="header-group">
+    <div class="hero-image">
+      <h1 >Welcome to Darrin Fry's Home Page</h1>
+      <nav >
+        <ul class="navigation">
+          <li><a href="../index.html" >CS 213 Assignments</a></li>
+          <li><a href="./assign04.html">Home</a></li>
+          <li><a id="current" href="./assign04_2.html">Gallery</a></li>
+        </ul>
+      </nav>
+    </div>
+    
+    
+  </header>
+  <h2 id="dazzle">Rings that Dazzle</h2>
+
+  <div class="gallery-group">
+    <figure>
+      <img src="./images/03092018a.jpg" alt="diamond and sapphire ring">
+      <figcaption>Two Tone ring featuring white diamonds and blue <span class="span-stand-out">sapphires</span>. </figcaption>
+    </figure>
+    <figure>
+      <img src="./images/03262018b.jpg" alt="diamond and emerald ring">
+      <figcaption>Platinum and diamond art-deco inspired ring accented with <span class="span-stand-out">emeralds</span>.</figcaption>
+    </figure>
+    <figure>
+      <img src="./images/06072018a.jpg" alt="pearl and diamond ring">
+      <figcaption>A black tahitian <span class="span-stand-out">pearl</span> accented with diamonds in a modern mounting</figcaption>
+    </figure>
+    <figure>
+      <img src="./images/04252018b.jpg" alt="aquamarine and diamond ring">
+      <figcaption>A substantial <span class="span-stand-out">aquamarine</span> framed with colorless diamonds.</figcaption>
+    </figure>
+    <figure>
+      <img src="./images/06152018a.jpg" alt="diamond and pink sapphire ring">
+      <figcaption>A double halo ring featuring diamonds and bright pink <span class="span-stand-out">sapphires</span>.</figcaption>
+    </figure>
+    <figure>
+      <img src="./images/10172017A.jpg" alt="diamond and sapphire ring">
+      <figcaption>A bright round diamond framed by more bright diamonds and accented with deep blue <span class="span-stand-out">sapphires</span>.</figcaption>
+    </figure>
+    <figure>
+      <img src="./images/12112017a.jpg" alt="diamond two tone ring">
+      <figcaption>A modern rose and white gold ring with colorless <span class="span-stand-out">diamonds</span>.</figcaption>
+    </figure>
+    <figure>
+      <img src="./images/MatrixGold-Render-Test-2.jpg" alt="diamond and pink tourmaline ring">
+      <figcaption> Pink <span class="span-stand-out">tourmaline</span> frame the substantial oval diamond.</figcaption>
+    </figure>
+    <figure>
+      <img src="./images/Molinellis-Craig-Oval-Cluster-5.jpg" alt="diamond cluster ring">
+      <figcaption>A <span class="span-stand-out">diamond</span> cluster ring set in rose and white gold.</figcaption>
+    </figure>
+      
+  </div>
+
+  <footer class="footer-content">
+    <p>&copy; 2020 | Darrin Fry | Utah |
+    <a href="https://www.byui.edu/online " target="_blank" >BYUI Online Learning</a> </p>
+  </footer>
+  
+</body>
 </html>
