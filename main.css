@@ -1,0 +1,45 @@
+#mainSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 40px;
+  width: 80%;
+  margin: auto;
+
+}
+.about {
+  border-style: solid; 
+  padding: 20px;
+  font-family: 'Times New Roman', Times, serif;
+}
+.newPara {
+  border-style: solid; 
+  padding: 20px;
+  font-family: 'Times New Roman', Times, serif;
+}
+.top, .bottom {
+  background-image: url("https://picsum.photos/1920/350/");
+  background-repeat: no-repeat;
+  color: oldlace;
+  mix-blend-mode: screen;
+  text-shadow: .07em 0 black, 0 .07em black, -.07em 0 black, 0 -.07em black;
+  letter-spacing: .10em;
+}
+.bottom {
+  text-align: center;
+  margin: auto;
+  padding: 20px;
+}
+.bodyImg {
+  max-width: 100%;
+  margin: auto;
+}
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+#reset {
+  background-color: red;
+}
+#submit{
+  background-color: green;
+}

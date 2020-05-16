@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./main.css">
+  <title>Darrin Fry's Week 3 Assignment</title>
+
+  <style>
+    fieldset {
+      display: grid;
+      margin: auto;
+      margin-bottom: 20px;
+      padding: 20px;
+      height: 300px;
+    }
+    form {
+      padding:10px;
+    }
+    button {
+      padding: 5px;
+      margin:10px;
+    }
+    nav {
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .navigation {
+      list-style: none;
+
+    }
+    ul {
+      display: block;
+    
+    }
+    li {
+      display: inline;
+      border: 2px solid black;
+      padding: 5px;
+      background-color: rgba(0, 0, 0, .30);
+      border-radius: 3px;
+    }
+    a {
+      text-decoration: none;
+      color: oldlace;
+    }
+    h1 {
+      margin-top: 0px;
+      padding-top: 20px;
+    }
+    h2 {
+      font-size: 1.8em;
+      font-style: italic;
+    }
+    h1, h2 {
+      text-align: center; 
+      font-family: 'Lucida Console', Courier, monospace; 
+    }
+    hr {
+      border: none; 
+      height: 5px; 
+      background: black; 
+    }
+   
+  </style>
+</head>
+
+<body style="display: block; margin: auto; width: 100%; font-size: 1.25em;">
+
+  <header class="top" style=" margin-bottom: 20px; align-items: center; ">
+    <h1 >Welcome to Darrin Fry's Home Page</h1>
+    <hr>
+    <nav >
+      <ul class="navigation">
+        <li><a href="../index.html" >CS 213 Assignments</a></li>
+        <li><a  href="#formStart">TAKE ME TO THE FORM</a></li>
+        <li><a href="#scheduleStart">TAKE ME TO THE SCHEDULE</a></li>
+        <li><a href="#aboutStart">TAKE ME TO ABOUT ME</a></li>
+    </ul>
+    </nav>
+    <hr>
+  </header>
+
+  <section id="mainSection">
+    <div class="about">
+      <a id="aboutStart"></a>
+      <h2>About Me</h2>
+      <hr>
+      <img src="./profile_photo.jpg" alt="profile picture" width="150" height="163">
+      <h4 style="margin-bottom: 0px; ">Name:</h4> 
+      <p>Darrin Fry</p>
+      <h4 style="margin-bottom: 0px;">Favorite Quote:</h4>
+      <blockquote cite="https://www.goodreads.com/quotes/6295680-as-you-ramble-on-through-life-brother-whatever-be-your" style="line-height: 1.50em;">
+        <p style="font-style: italic;">As you ramble on through life, Brother, Whatever be your goal, Keep your eye upon the doughnut, And not upon the hole. - Margaret Atwood, The Blind Assassin</p>
+      </blockquote> 
+      <h4 style="margin-bottom: 0px;">Major:</h4> 
+      <p>Applied Technology</p>
+      <h4 style="margin-bottom: 0px;">Where am I from:</h4> 
+      <p>Washington, Utah</p>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d101806.5600219392!2d-113.54919378681866!3d37.1180887502838!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80ca5980829bc833%3A0x732fca6bf8e3948a!2sWashington%2C%20UT!5e0!3m2!1sen!2sus!4v1588387138199!5m2!1sen!2sus" width="300" height="225" allowfullscreen="" aria-hidden="false" tabindex="0">
+      </iframe> 
+    </div>
+
+    <div class="newPara">
+      <h2>Me in 30 Seconds</h2>
+      <hr>
+      <p>Hello everyone. My name is Darrin and I hail from Washington, Utah (just outside of St. George).  My wife and I have been married for 13 years and have two girls, ages 7 and 3. I have spent the last 12 years as a jewelry designer and appraiser with a formal education in gemological studies from the Gemological Institute of America.  As for my career goals; it is always wise to have a contingency plan. So, while I intend to spend my days making sparkling things, it is good to have a backup plan. This has led me to return to school to get a degree in technology.  If sleeping in till 6:15 in the morning isn't a good hobby, I guess mine would be gardening. We have a half-acre with a small orchard, two vegetable gardens, three dozen rose bushes and a horde of additional flora.  When we are not at home we are up in the mountains at the family cabin or down at Disneyland. These hobbies, coupled with family, church, work, and life, keeps me pretty busy.  Most of my homework is done late at night, between 8-11 pm MST and I typically prefer to do all my homework on weekdays and save the weekends for family. </p>
+      <p> ↓ ↓ Click the image to go to BYU-I's Instructure Page ↓ ↓</p>
+      <a href="https://byui.instructure.com/" target="_blank" ><img class="bodyImg" src="./family700med.jpg" alt="picture of my family" ></a>
+    </div>
+
+  </section>
+
+  <div style="padding: 20px 60px 20px 60px; margin-top: 20px; margin-bottom: 20px; align-items: center; max-width: 80%; margin-left: 40px; margin-right: 40px;  ">
+    <a id="scheduleStart"></a>
+    <table style="text-align: center; border-style: solid; margin-left: auto; margin-right: auto; font-family: sans-serif, serif; ">
+      <thead>
+        <tr>
+          <th colspan="5" style="font-weight: bold; font-size: larger; border-bottom: 2px solid black;">Spring 2020 Course Schedule</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th style="border-bottom: 2px solid black; border-left: 2px solid black;">Course #</th>
+          <th style="border-bottom: 2px solid black; border-left: 2px solid black;">Course Description</th>
+          <th style="border-bottom: 2px solid black; border-left: 2px solid black;">Section #</th>
+          <th style="border-bottom: 2px solid black; border-left: 2px solid black;">Class Time</th>
+          <th style="border-bottom: 2px solid black; border-left: 2px solid black; border-right: 2px solid black;">Class Location</th>
+        </tr>
+        <tr>
+          <td style="border-bottom: 2px solid black; border-left: 2px solid black;">Cs 213</td>
+          <td style="border-bottom: 2px solid black; border-left: 2px solid black;">Web Engineering 1</td>
+          <td style="border-bottom: 2px solid black; border-left: 2px solid black;">Section 03</td>
+          <td style="border-bottom: 2px solid black; border-left: 2px solid black;">8:00PM-12:00AM</td>
+          <td style="border-bottom: 2px solid black; border-left: 2px solid black; border-right: 2px solid black;">The home office</td>
+        </tr>
+        <tr>
+          <td style="border-bottom: 2px solid black; border-left: 2px solid black;">HS 132</td>
+          <td style="border-bottom: 2px solid black; border-left: 2px solid black;">Personal Health and Wellness</td>
+          <td style="border-bottom: 2px solid black; border-left: 2px solid black;">Section 12</td>
+          <td style="border-bottom: 2px solid black; border-left: 2px solid black;">8:00PM-12:00AM</td>
+          <td style="border-bottom: 2px solid black; border-left: 2px solid black; border-right: 2px solid black;">The home office</td>
+        </tr>
+        <tr>
+          <td style="border-bottom: 2px solid black; border-left: 2px solid black;">SMMBC 105</td>
+          <td style="border-bottom: 2px solid black; border-left: 2px solid black;">Intro to Social Media Marketing</td>
+          <td style="border-bottom: 2px solid black; border-left: 2px solid black;">Section 05</td>
+          <td style="border-bottom: 2px solid black; border-left: 2px solid black;">8:00PM-12:00AM</td>
+          <td style="border-bottom: 2px solid black; border-left: 2px solid black; border-right: 2px solid black;">The home office</td>
+        </tr>
+        <tr>
+          <td style="border-bottom: 2px solid black; border-left: 2px solid black;">WDD 331</td>
+          <td style="border-bottom: 2px solid black; border-left: 2px solid black;">Advanced CSS</td>
+          <td style="border-bottom: 2px solid black; border-left: 2px solid black;">Section 04</td>
+          <td style="border-bottom: 2px solid black; border-left: 2px solid black;">8:00PM-12:00AM</td>
+          <td style="border-bottom: 2px solid black; border-left: 2px solid black; border-right: 2px solid black; ">The home office</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="form">
+    <fieldset>
+      <legend>Form Part One</legend>
+      <a id="formStart"></a>
+      
+      <button type="reset" id="reset"> Reset Button</button>
+      
+      <textarea id="comments" rows="8" cols="25" name="comments" > Please enter any additional comments or information here:</textarea>
+      <form >
+        <input type="checkbox" id="option1" name="option1" value="option1">
+        <label for="option1"> option 1</label><br>
+        <input type="checkbox" id="option2" name="option2" value="option2">
+        <label for="option2"> option 2</label><br>
+        <input type="checkbox" id="option3" name="option3" value="option3">
+        <label for="option3"> option 3</label><br><br>
+      </form>
+    </fieldset>
+    <fieldset>
+      <legend>Form Part Two</legend>
+      <form>
+        <label >Radio Buttons</label> <br>
+        <input type="radio" id="yes" value="yes" >
+          <label for="yes">Yes</label>
+        <input type="radio" id="maybe" value="maybe" >
+          <label for="maybe">Maybe</label>
+        <input type="radio" id="no" value="no" >
+          <label for="no">No</label>
+      </form>
+      <input type="text">
+      <form>
+        
+        <label >Select from this menu</label> <br>
+          <select name="select">
+            <option value="default" selected disabled>Select Option</option>
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </select>
+      </form>
+      <button type="submit" id="submit">Submit Button</button>
+      <!--needs background colors-->
+    </fieldset>
+  </div>
+  <div>
+    <h2> ↓ ↓ The BYUI in the footer is also a clickable link ↓ ↓ </h2>
+  </div>
+  <footer class="bottom">
+    <p>&copy; 2020 | Darrin Fry | Utah |
+    <a href="https://www.byui.edu/online " target="_blank" >BYUI Online Learning</a> </p>
+  </footer>
+  
+</body>
+</html>
