@@ -1,0 +1,38 @@
+.gray-bubble {
+  
+  height: 750px;
+  width: 750px;
+  background-color: #bbb;
+  border-radius: 50%;
+  position: absolute;
+  left:-20%;
+  top: -20%;
+  z-index: -1000;
+}
+
+#btnControl {
+  display: none;
+
+}
+.animation-test:hover {
+  
+  animation-name: center;
+  animation-duration: 2s;
+}
+
+
+#btnControl + label > img {
+  border-radius: 50%;
+  
+}
+
+#btnControl:checked + label > img {
+  border-radius: 0%;
+  transition: 3s;
+  transform: scale(2);
+ 
+}
+
+@keyframes center {
+  100% {left: 50%; top: 50%}
+}
