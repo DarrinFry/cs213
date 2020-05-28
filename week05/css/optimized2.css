@@ -1,3 +1,27 @@
+/*** uncss> filename: https://fonts.googleapis.com/css2?family=Bree+Serif&family=Lobster&family=Roboto&display=swap ***/
+@font-face {
+  font-family: 'Bree Serif';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Bree Serif Regular'), local('BreeSerif-Regular'), url(https://fonts.gstatic.com/s/breeserif/v9/4UaHrEJCrhhnVA3DgluAx60.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Lobster';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lobster Regular'), local('Lobster-Regular'), url(https://fonts.gstatic.com/s/lobster/v22/neILzCirqoswsqX9_oU.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Me5Q.ttf) format('truetype');
+}
+ 
+/*** uncss> filename: http://127.0.0.1:5500/css/main.css ***/
 nav, footer {
   background-color: rgba(60, 60, 60, 0.4);
   text-align: center;
@@ -25,17 +49,11 @@ nav li .current {
   text-align: center;
   text-decoration: none; }
 
-.navigation .active {
-  background-color: #56acdd; }
-
 .navigation a:hover {
   color: #000;
   background-color: rgba(255, 255, 255, 0.6);
   font-weight: 700;
   border-radius: 5px; }
-
-.responsive li {
-  display: block; }
 
 body {
   padding: 0;
@@ -223,3 +241,4 @@ p {
     text-align: justify; } }
 
 /*# sourceMappingURL=main.css.map */
+
