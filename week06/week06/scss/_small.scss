@@ -38,10 +38,10 @@ color: #000;
 	display: block;
 }
 
-
 body {
   padding: 0;
   margin: 0;
+  font-family: $paraFont;
 }
 .hero-image {
   background-image: url("https://picsum.photos/1920/400");
@@ -58,15 +58,26 @@ h1, h3 {
   text-align: center;
 }
 h1 {
+  font-family: $universityFont;
   padding-top: 20px;
   margin-top: 0;
 }
 h3{
   padding-bottom: 20px;
   margin-bottom: 0;
+  font-family: $headingFoint;
 }
 .heading {
   background-color: $mainColor;
+}
+.corner-u {
+  display: inline-block;
+  background-color: white;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left:0;
+  top: 0;
 }
 nav:before, nav:after{
   content: "";
