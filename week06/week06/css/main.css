@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Oswald:wght@500&family=Roboto+Slab:wght@900&display=swap");
 nav, footer {
   background-color: silver;
   text-align: center;
@@ -38,7 +39,8 @@ nav li .current {
 
 body {
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  font-family: "Montserrat", sans-serif; }
 
 .hero-image {
   background-image: url("https://picsum.photos/1920/400");
@@ -53,15 +55,30 @@ h1, h3 {
   text-align: center; }
 
 h1 {
+  font-family: "Roboto Slab", serif;
   padding-top: 20px;
   margin-top: 0; }
 
 h3 {
   padding-bottom: 20px;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  font-family: "Oswald", sans-serif; }
 
 .heading {
   background-color: royalblue; }
+
+.corner-u, .corner-u-2 {
+  display: inline-block;
+  background-color: white;
+  width: 120px;
+  height: auto;
+  position: absolute;
+  left: 0;
+  top: 0; }
+
+.corner-u-2 {
+  left: auto;
+  right: 0; }
 
 nav:before, nav:after {
   content: "";

@@ -1,3 +1,4 @@
+
 nav, footer {
   background-color:$secondaryColor;
   text-align: center;
@@ -65,19 +66,23 @@ h1 {
 h3{
   padding-bottom: 20px;
   margin-bottom: 0;
-  font-family: $headingFoint;
+  font-family: $headingFont;
 }
 .heading {
   background-color: $mainColor;
 }
-.corner-u {
+.corner-u, .corner-u-2 {
   display: inline-block;
   background-color: white;
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: auto;
   position: absolute;
   left:0;
   top: 0;
+}
+.corner-u-2 {
+  left: auto;
+  right:0;
 }
 nav:before, nav:after{
   content: "";
