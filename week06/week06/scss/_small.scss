@@ -73,8 +73,8 @@ h3{
 }
 .corner-u, .corner-u-2 {
   display: inline-block;
-  background-color: white;
-  width: 120px;
+  background-color: none;
+  width: 130px;
   height: auto;
   position: absolute;
   left:0;
@@ -83,23 +83,6 @@ h3{
 .corner-u-2 {
   left: auto;
   right:0;
-}
-nav:before, nav:after{
-  content: "";
-  
-  width: 0px;
-  height: 0px;
-  border-right: 50px solid transparent;
-  border-top: 50px solid $accentColor;
-  border-left: 50px solid $accentColor;
-  border-bottom: 50px solid $accentColor;
-  border-top-left-radius: 50px;
-  border-top-right-radius: 50px;
-  border-bottom-left-radius: 50px;
-  border-bottom-right-radius: 50px;
-}
-nav:after{
-  transform: rotate(180deg);
 }
 
 .content-grid {
