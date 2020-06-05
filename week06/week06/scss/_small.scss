@@ -55,7 +55,11 @@ body {
    
 }
 
+<<<<<<< HEAD
 h1, h3, h2 {
+=======
+h1, h3 {
+>>>>>>> 99822eaf0a11635598f69651e21dac3cd137e49d
   text-align: center;
 }
 h1 {
@@ -73,13 +77,24 @@ h3{
 }
 .corner-u, .corner-u-2 {
   display: inline-block;
+<<<<<<< HEAD
   
+=======
+  background-color: none;
+>>>>>>> 99822eaf0a11635598f69651e21dac3cd137e49d
   width: 130px;
   height: auto;
   position: absolute;
   left:0;
   top: 0;
 }
+<<<<<<< HEAD
+=======
+.corner-u-2 {
+  left: auto;
+  right:0;
+}
+>>>>>>> 99822eaf0a11635598f69651e21dac3cd137e49d
 
 .content-grid {
   max-width: 80%;
@@ -137,6 +152,7 @@ p {
   text-align: justify;
 }
   
+<<<<<<< HEAD
 .grid-container {
   background-color: $accentColor;
   padding: 20px;
@@ -149,3 +165,5 @@ p {
   font-size: 2rem;
   margin-bottom: 20px;
 }
+=======
+>>>>>>> 99822eaf0a11635598f69651e21dac3cd137e49d

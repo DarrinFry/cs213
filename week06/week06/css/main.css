@@ -1,230 +1,77 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Oswald:wght@500&family=Roboto+Slab:wght@900&display=swap");
-nav, footer {
-  background-color: silver;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: space-around; }
+/*
+Error: Invalid CSS after "...t-align: center": expected "{", was ";"
+        on line 63 of D:/Dropbox/School/CS 213/cs213-1/week06/week06/scss/_small.scss
+        from line 3 of D:\Dropbox\School\CS 213\cs213-1\week06\week06\scss\main.scss
 
-nav li .current {
-  background-color: rgba(255, 255, 255, 0.6); }
+58: <<<<<<< HEAD
+59: h1, h3, h2 {
+60: =======
+61: h1, h3 {
+62: >>>>>>> 99822eaf0a11635598f69651e21dac3cd137e49d
+63:   text-align: center;
+64: }
+65: h1 {
+66:   font-family: $universityFont;
+67:   padding-top: 20px;
+68:   margin-top: 0;
 
-.navigation {
-  list-style: none;
-  padding: 0em; }
-
-.navigation li:first-child {
-  display: block; }
-
-.navigation li {
-  display: none; }
-
-.navigation a {
-  display: block;
-  color: black;
-  padding: 0.5rem;
-  text-align: center;
-  text-decoration: none; }
-
-.navigation .active {
-  background-color: royalblue; }
-
-.navigation a:hover {
-  color: #000;
-  background-color: rgba(255, 255, 255, 0.6);
-  font-weight: 700; }
-
-.responsive li {
-  display: block; }
-
-body {
-  padding: 0;
-  margin: 0;
-  font-family: "Montserrat", sans-serif; }
-
-.hero-image {
-  background-image: url("https://picsum.photos/1920/400");
-  background-color: #cccccc;
-  height: 400px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative; }
-
-h1, h3, h2 {
-  text-align: center; }
-
-h1 {
-  font-family: "Roboto Slab", serif;
-  padding-top: 20px;
-  margin-top: 0; }
-
-h3 {
-  padding-bottom: 20px;
-  margin-bottom: 0;
-  font-family: "Oswald", sans-serif; }
-
-.heading {
-  background-color: royalblue; }
-
-.corner-u, .corner-u-2 {
-  display: inline-block;
-  width: 130px;
-  height: auto;
-  position: absolute;
-  left: 0;
-  top: 0; }
-
-.content-grid {
-  max-width: 80%;
-  margin: auto;
-  padding: 20px; }
-
-.content {
-  display: grid;
-  grid-gap: 1rem;
-  gap: 1rem;
-  grid-row-gap: 1rem;
-  grid-template-columns: 1fr;
-  justify-items: center;
-  margin: auto;
-  margin-bottom: 20px; }
-
-.content img:nth-of-type(2) {
-  display: none; }
-
-img {
-  max-width: 100%;
-  box-shadow: 0 0 30px #1c3144; }
-
-.inner-box {
-  max-width: 80%;
-  margin: auto;
-  background-color: rgba(255, 255, 255, 0.6);
-  border-radius: 25%; }
-
-.inner-box:hover {
-  transition: 1.0s;
-  transform: scale(1.3); }
-
-.inner-img {
-  max-width: 80%;
-  margin: auto;
-  height: auto; }
-
-.content h2 {
-  margin: 10px;
-  padding: 20px;
-  text-align: center; }
-
-p {
-  padding: 20px;
-  vertical-align: middle;
-  text-align: justify; }
-
-.grid-container {
-  background-color: orange;
-  padding: 20px; }
-
-.art-grid-container {
-  margin: auto;
-  align-items: center; }
-
-.content-grid h3 {
-  font-size: 2rem;
-  margin-bottom: 20px; }
-
-@media (min-width: 700px) {
-  .navigation {
-    display: flex; }
-
-  .navigation li {
-    display: block;
-    flex: 1 1 100%; }
-
-  .navigation li a {
-    margin-left: 20px;
-    text-align: center; }
-
-  .navigation li:first-child {
-    display: none; }
-
-  .content {
-    display: grid;
-    grid-gap: 1rem;
-    gap: 1rem;
-    grid-template-columns: 1fr 1fr; }
-
-  .content p {
-    display: flex;
-    justify-content: center;
-    align-items: center; }
-
-  .corner-u-2 {
-    left: auto;
-    right: 0; }
-
-  .left-side-bar {
-    grid-area: left;
-    padding: 20px; }
-
-  .left-side-bar li {
-    line-height: 4rem; }
-
-  .left-side-bar li:nth-last-of-type(1) {
-    margin-top: 1rem;
-    line-height: 1rem; }
-
-  .main {
-    grid-area: main;
-    padding: 20px; }
-
-  .bottom {
-    grid-area: bottom;
-    padding: 20px; }
-
-  .grid-container {
-    display: grid;
-    grid-template-areas: 'left main main main main ' ' left main main main main' ' left bottom bottom bottom bottom';
-    grid-gap: 1rem;
-    background-color: orange;
-    padding: 20px; }
-
-  .main-2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    grid-area: main;
-    padding: 20px; }
-
-  .art-grid-container {
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 1rem; } }
-@media (min-width: 1000px) {
-  .navigation {
-    display: flex; }
-
-  .navigation li {
-    display: block;
-    flex: 1 1 100%; }
-
-  .navigation li a {
-    margin-left: 20px;
-    text-align: center; }
-
-  .navigation li:first-child {
-    display: none; }
-
-  .content {
-    grid-template-columns: 1fr 2fr 1fr; }
-
-  .content img:nth-of-type(2) {
-    display: inline; }
-
-  .art-grid-container {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 1rem; } }
-
-/*# sourceMappingURL=main.css.map */
+Backtrace:
+D:/Dropbox/School/CS 213/cs213-1/week06/week06/scss/_small.scss:63
+D:\Dropbox\School\CS 213\cs213-1\week06\week06\scss\main.scss:3
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:1278:in `expected'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:1208:in `expected'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:1203:in `tok!'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:677:in `block'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:747:in `declaration_or_ruleset'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:697:in `block_child'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:686:in `block_contents'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:678:in `block'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:747:in `declaration_or_ruleset'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:697:in `block_child'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:686:in `block_contents'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:678:in `block'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:670:in `ruleset'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:696:in `block_child'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:689:in `block_contents'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:137:in `stylesheet'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/scss/parser.rb:41:in `parse'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/engine.rb:414:in `_to_tree'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/engine.rb:321:in `to_tree'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:327:in `block in visit_import'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:88:in `block in with_import'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:135:in `with_frame'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:88:in `with_import'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:326:in `visit_import'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `block in visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `block in with_base'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:135:in `with_frame'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/stack.rb:79:in `with_base'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:162:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:52:in `map'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:171:in `block in visit_children'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:183:in `with_environment'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:170:in `visit_children'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:190:in `visit_root'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/base.rb:36:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:161:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/visitors/perform.rb:10:in `visit'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/root_node.rb:36:in `css_tree'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/engine.rb:307:in `render_with_sourcemap'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/exec/sass_scss.rb:391:in `run'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/exec/sass_scss.rb:63:in `process_result'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/exec/base.rb:52:in `parse'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/lib/sass/exec/base.rb:19:in `parse!'
+C:/Program Files (x86)/Koala/rubygems/gems/sass-3.5.2/bin/sass:13:in `<top (required)>'
+C:/Program Files (x86)/Koala/bin/sass:22:in `load'
+C:/Program Files (x86)/Koala/bin/sass:22:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"...t-align: center\": expected \"{\", was \";\"\A         on line 63 of D:/Dropbox/School/CS 213/cs213-1/week06/week06/scss/_small.scss\A         from line 3 of D:\Dropbox\School\CS 213\cs213-1\week06\week06\scss\main.scss\A \A 58: <<<<<<< HEAD\A 59: h1, h3, h2 {\A 60: =======\A 61: h1, h3 {\A 62: >>>>>>> 99822eaf0a11635598f69651e21dac3cd137e49d\A 63:   text-align: center;\A 64: }\A 65: h1 {\A 66:   font-family: $universityFont;\A 67:   padding-top: 20px;\A 68:   margin-top: 0;"; }
