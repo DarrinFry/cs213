@@ -43,13 +43,13 @@
       <div id="formDiv">
         <form id="calcForm">
           <p>APR - Annual Percentage Rate (between 0 and 25.00) 
-          <input type="text" id="apr" name="apr" onfocusout="valueCheck1()" onmouseout="valueCheck1()" onchange="calculateFunc2()" size="10" placeholder="APR"><span id="errorMessage1"></span></p>
+          <input type="text" id="apr" name="apr" onblur="valueCheck1()" onmouseout="valueCheck1()" onchange="calculateFunc2()" size="10" placeholder="APR"><span id="errorMessage1"></span></p>
           <p>Loan Term in years (between 0 and 40) 
-          <input type="text" id="term" name="amount" onfocusout="valueCheck2()" onmouseout="valueCheck2()" onchange="calculateFunc2()" size="10" placeholder="TERM"><span id="errorMessage2"></span></p>
+          <input type="text" id="term" name="amount" onblur="valueCheck2()" onmouseout="valueCheck2()" onchange="calculateFunc2()" size="10" placeholder="TERM"><span id="errorMessage2"></span></p>
           <p>Loan Amount - (in dollars) 
-          <input type="text" id="amount" name="amount" onfocusout="valueCheck3()" onmouseout="valueCheck3()" onchange="calculateFunc2()" size="10" placeholder="LOAN AMOUNT"><span id="errorMessage3"></span></p>
+          <input type="text" id="amount" name="amount" onblur="valueCheck3()" onmouseout="valueCheck3()" onchange="calculateFunc2()" size="10" placeholder="LOAN AMOUNT"><span id="errorMessage3"></span></p>
           <p>Payments per year 
-          <input type="text" id="paymentsPerYearInput" name="paymentsPerYearInput" onfocusout="valueCheck4()" onmouseout="valueCheck4()" onchange="calculateFunc2()" size="10" placeholder="PAY PER YEAR"><span id="errorMessage4"></p></span>
+          <input type="text" id="paymentsPerYearInput" name="paymentsPerYearInput" onblur="valueCheck4()" onmouseout="valueCheck4()" onchange="calculateFunc2()" size="10" placeholder="PAY PER YEAR"><span id="errorMessage4"></span></p>
           <button type="button"  id="calculate" onclick = "calculateFunc()">Compute payment</button>  <button type="button" id="clear" onclick="formReset()" value="Reset form"> RESET </button> 
         </form>
       </div>
