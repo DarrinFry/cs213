@@ -8,124 +8,7 @@
   <title>Darrin Fry Week 7 JavaScript Calculator</title>
   <meta name="description" content="A calculator for CS213 Week 7">
 
-  <script>
-    //takes customer input and passes it through the computePayment function, which is then returned back to this function for printing.
-    function calculateFunc(){
-      let check1 = valueCheck1();
-      let check2 = valueCheck2();
-      let check3 = valueCheck3();
-      let check4 = valueCheck4();
-
-      if (check1 == true && check2 == true && check3 == true && check4 == true){
-        let principal = parseFloat(document.getElementById("amount").value);
-        let rate = (parseFloat(document.getElementById("apr").value) / 100);
-        let years = parseFloat(document.getElementById("term").value);
-        let periods = parseFloat(document.getElementById("paymentsPerYearInput").value);
-        let value = computePayment(principal, rate, years, periods);
-        let result = Math.round(value * 100) / 100;
-        document.getElementById("payment").innerHTML = "Your monthly payment will be $" + result; 
-        document.getElementById("payment").style.backgroundColor = "white";
-      } else {
-      document.getElementById("payment").innerHTML = " Please fill out all boxes with correct information";
-      document.getElementById("payment").style.backgroundColor = "orange";
-    }}
-    function calculateFunc2(){
-      let check5 = valueCheck5();
-      if (check5 == true){
-        calculateFunc();        
-      }
-    }
-    //takes the user input from calculate and calculates the monthly payment, which is then returned for future use.
-    function computePayment(principal, annualRate, years, periodsPerYear) {
-        let r = annualRate / periodsPerYear;
-        let n = years * periodsPerYear;
-        let p = (principal*r)/(1-(1+r)**-n);
-        return p;
-   }
-   //reset the form
-   function formReset() {
-    document.getElementById("calcForm").reset();
-    document.getElementById("errorMessage1").innerHTML = "";
-    document.getElementById("errorMessage2").innerHTML = "";
-    document.getElementById("errorMessage3").innerHTML = "";
-    document.getElementById("errorMessage4").innerHTML = "";
-    document.getElementById("payment").innerHTML = "";
-    document.getElementById("apr").style.backgroundColor = "white";
-    document.getElementById("term").style.backgroundColor = "white";
-    document.getElementById("amount").style.backgroundColor = "white";
-    document.getElementById("paymentsPerYearInput").style.backgroundColor = "white";
-    document.getElementById("apr").focus()
-   }
-   //checks for appropriate inputs and notifies the user if not
-  function valueCheck1() {
-    var x;
-    var style = document.getElementById("apr");
-    x = parseFloat(document.getElementById("apr").value);
-    if (isNaN(x) || x < 0 || x > 25) {
-      document.getElementById("errorMessage1").innerHTML = "Input not valid";
-      style.style.backgroundColor = "red";
-      return false;
-    } else {
-      document.getElementById("errorMessage1").innerHTML = "";
-      style.style.backgroundColor = "white";
-      return true;
-    }
-  }
-  //checks for appropriate inputs and notifies the user if not
-  function valueCheck2() {
-    var x;
-    var style = document.getElementById("term");
-    x = parseFloat(document.getElementById("term").value);
-    if (isNaN(x) || x <= 0 || x > 40) {
-      document.getElementById("errorMessage2").innerHTML = "Input not valid";
-      style.style.backgroundColor = "red";
-      return false;
-    } else {
-      document.getElementById("errorMessage2").innerHTML = "";
-      style.style.backgroundColor = "white";
-      return true;
-    }
-  }
-  //checks for appropriate inputs and notifies the user if not
-  function valueCheck3() {
-    var x;
-    var style = document.getElementById("amount");
-    x = parseFloat(document.getElementById("amount").value);
-    if (isNaN(x) || x <= 0 ) {
-      document.getElementById("errorMessage3").innerHTML = "Input not valid";
-      style.style.backgroundColor = "red";
-      return false;
-    } else {
-      document.getElementById("errorMessage3").innerHTML = "";
-      style.style.backgroundColor = "white";
-      return  true;
-    }
-  }
-  //checks for appropriate inputs and notifies the user if not
-  function valueCheck4() {
-    var x;
-    var style = document.getElementById("paymentsPerYearInput");
-    x = parseFloat(document.getElementById("paymentsPerYearInput").value);
-    if (isNaN(x) || x <= 0 ) {
-      document.getElementById("errorMessage4").innerHTML = "Input not valid";
-      style.style.backgroundColor = "red";
-      return false;
-    } else {
-      document.getElementById("errorMessage4").innerHTML = "";
-      style.style.backgroundColor = "white";
-      return true;
-    }
-  }
-  function valueCheck5() {
-    var x;
-    x = document.getElementById("payment").innerText;
-    if (x == "") {
-      return false;
-    } else {
-      return true;
-    }
-  }
-</script>
+ 
 
 </head>
 
@@ -187,6 +70,124 @@
         document.querySelector(".navigation").classList.toggle("responsive");
       }
     </script>
+     <script>
+      //takes customer input and passes it through the computePayment function, which is then returned back to this function for printing.
+      function calculateFunc(){
+        let check1 = valueCheck1();
+        let check2 = valueCheck2();
+        let check3 = valueCheck3();
+        let check4 = valueCheck4();
+        if (check1 == true && check2 == true && check3 == true && check4 == true){
+          let principal = parseFloat(document.getElementById("amount").value);
+          let rate = (parseFloat(document.getElementById("apr").value) / 100);
+          let years = parseFloat(document.getElementById("term").value);
+          let periods = parseFloat(document.getElementById("paymentsPerYearInput").value);
+          let value = computePayment(principal, rate, years, periods);
+          let result = Math.round(value * 100) / 100;
+          document.getElementById("payment").innerHTML = "Your monthly payment will be $" + result; 
+          document.getElementById("payment").style.backgroundColor = "white";
+        } else {
+        document.getElementById("payment").innerHTML = " Please fill out all boxes with correct information";
+        document.getElementById("payment").style.backgroundColor = "orange";
+        }
+      }
+      function calculateFunc2(){
+        let check5 = valueCheck5();
+        if (check5 == true){
+          calculateFunc();        
+        }
+      }
+      //takes the user input from calculate and calculates the monthly payment, which is then returned for future use.
+      function computePayment(principal, annualRate, years, periodsPerYear) {
+          let r = annualRate / periodsPerYear;
+          let n = years * periodsPerYear;
+          let p = (principal*r)/(1-(1+r)**-n);
+          return p;
+     }
+     //reset the form
+     function formReset() {
+      document.getElementById("calcForm").reset();
+      document.getElementById("errorMessage1").innerHTML = "";
+      document.getElementById("errorMessage2").innerHTML = "";
+      document.getElementById("errorMessage3").innerHTML = "";
+      document.getElementById("errorMessage4").innerHTML = "";
+      document.getElementById("payment").innerHTML = "";
+      document.getElementById("apr").style.backgroundColor = "white";
+      document.getElementById("term").style.backgroundColor = "white";
+      document.getElementById("amount").style.backgroundColor = "white";
+      document.getElementById("paymentsPerYearInput").style.backgroundColor = "white";
+      document.getElementById("apr").focus()
+     }
+     //checks for appropriate inputs and notifies the user if not
+    function valueCheck1() {
+      var x;
+      var style = document.getElementById("apr");
+      x = parseFloat(document.getElementById("apr").value);
+      if (isNaN(x) || x < 0 || x > 25) {
+        document.getElementById("errorMessage1").innerHTML = "Input not valid";
+        style.style.backgroundColor = "red";
+        return false;
+      } else {
+        document.getElementById("errorMessage1").innerHTML = "";
+        style.style.backgroundColor = "white";
+        return true;
+      }
+    }
+    //checks for appropriate inputs and notifies the user if not
+    function valueCheck2() {
+      var x;
+      var style = document.getElementById("term");
+      x = parseFloat(document.getElementById("term").value);
+      if (isNaN(x) || x <= 0 || x > 40) {
+        document.getElementById("errorMessage2").innerHTML = "Input not valid";
+        style.style.backgroundColor = "red";
+        return false;
+      } else {
+        document.getElementById("errorMessage2").innerHTML = "";
+        style.style.backgroundColor = "white";
+        return true;
+      }
+    }
+    //checks for appropriate inputs and notifies the user if not
+    function valueCheck3() {
+      var x;
+      var style = document.getElementById("amount");
+      x = parseFloat(document.getElementById("amount").value);
+      if (isNaN(x) || x <= 0 ) {
+        document.getElementById("errorMessage3").innerHTML = "Input not valid";
+        style.style.backgroundColor = "red";
+        return false;
+      } else {
+        document.getElementById("errorMessage3").innerHTML = "";
+        style.style.backgroundColor = "white";
+        return  true;
+      }
+    }
+    //checks for appropriate inputs and notifies the user if not
+    function valueCheck4() {
+      var x;
+      var style = document.getElementById("paymentsPerYearInput");
+      x = parseFloat(document.getElementById("paymentsPerYearInput").value);
+      if (isNaN(x) || x <= 0 ) {
+        document.getElementById("errorMessage4").innerHTML = "Input not valid";
+        style.style.backgroundColor = "red";
+        return false;
+      } else {
+        document.getElementById("errorMessage4").innerHTML = "";
+        style.style.backgroundColor = "white";
+        return true;
+      }
+    }
+    function valueCheck5() {
+      var x;
+      x = document.getElementById("payment").innerText;
+      if (x == "") {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  </script>
   </footer>
   
 </body>
