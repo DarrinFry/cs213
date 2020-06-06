@@ -85,7 +85,8 @@
           let value = computePayment(principal, rate, years, periods);
           let result = Math.round(value * 100) / 100;
           document.getElementById("payment").innerHTML = "Your monthly payment will be $" + result; 
-          document.getElementById("payment").style.backgroundColor = "white";
+          document.getElementById("payment").style.backgroundColor = "yellow";
+          document.getElementById("payment").style.fontWeight = "bold";
         } else {
         document.getElementById("payment").innerHTML = " Please fill out all boxes with correct information";
         document.getElementById("payment").style.backgroundColor = "orange";
