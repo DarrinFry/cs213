@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Lobster&family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/main.css">
+  <title>Darrin Fry Week 7 JavaScript Calculator</title>
+  <meta name="description" content="A calculator for CS213 Week 7">
+
+  <script>
+    //takes customer input and passes it through the computePayment function, which is then returned back to this function for printing.
+    function calculateFunc(){
+      let check1 = valueCheck1();
+      let check2 = valueCheck2();
+      let check3 = valueCheck3();
+      let check4 = valueCheck4();
+
+      if (check1 == true && check2 == true && check3 == true && check4 == true){
+        let principal = parseFloat(document.getElementById("amount").value);
+        let rate = (parseFloat(document.getElementById("apr").value) / 100);
+        let years = parseFloat(document.getElementById("term").value);
+        let periods = parseFloat(document.getElementById("paymentsPerYearInput").value);
+        let value = computePayment(principal, rate, years, periods);
+        let result = Math.round(value * 100) / 100;
+        document.getElementById("payment").innerHTML = "Your monthly payment will be $" + result; 
+        document.getElementById("payment").style.backgroundColor = "white";
+      } else {
+      document.getElementById("payment").innerHTML = " Please fill out all boxes with correct information";
+      document.getElementById("payment").style.backgroundColor = "orange";
+    }}
+    function calculateFunc2(){
+      let check5 = valueCheck5();
+      if (check5 == true){
+        calculateFunc();        
+      }
+    }
+    //takes the user input from calculate and calculates the monthly payment, which is then returned for future use.
+    function computePayment(principal, annualRate, years, periodsPerYear) {
+        let r = annualRate / periodsPerYear;
+        let n = years * periodsPerYear;
+        let p = (principal*r)/(1-(1+r)**-n);
+        return p;
+   }
+   //reset the form
+   function formReset() {
+    document.getElementById("calcForm").reset();
+    document.getElementById("errorMessage1").innerHTML = "";
+    document.getElementById("errorMessage2").innerHTML = "";
+    document.getElementById("errorMessage3").innerHTML = "";
+    document.getElementById("errorMessage4").innerHTML = "";
+    document.getElementById("payment").innerHTML = "";
+    document.getElementById("apr").style.backgroundColor = "white";
+    document.getElementById("term").style.backgroundColor = "white";
+    document.getElementById("amount").style.backgroundColor = "white";
+    document.getElementById("paymentsPerYearInput").style.backgroundColor = "white";
+    document.getElementById("apr").focus()
+   }
+   //checks for appropriate inputs and notifies the user if not
+  function valueCheck1() {
+    var x;
+    var style = document.getElementById("apr");
+    x = parseFloat(document.getElementById("apr").value);
+    if (isNaN(x) || x < 0 || x > 25) {
+      document.getElementById("errorMessage1").innerHTML = "Input not valid";
+      style.style.backgroundColor = "red";
+      return false;
+    } else {
+      document.getElementById("errorMessage1").innerHTML = "";
+      style.style.backgroundColor = "white";
+      return true;
+    }
+  }
+  //checks for appropriate inputs and notifies the user if not
+  function valueCheck2() {
+    var x;
+    var style = document.getElementById("term");
+    x = parseFloat(document.getElementById("term").value);
+    if (isNaN(x) || x <= 0 || x > 40) {
+      document.getElementById("errorMessage2").innerHTML = "Input not valid";
+      style.style.backgroundColor = "red";
+      return false;
+    } else {
+      document.getElementById("errorMessage2").innerHTML = "";
+      style.style.backgroundColor = "white";
+      return true;
+    }
+  }
+  //checks for appropriate inputs and notifies the user if not
+  function valueCheck3() {
+    var x;
+    var style = document.getElementById("amount");
+    x = parseFloat(document.getElementById("amount").value);
+    if (isNaN(x) || x <= 0 ) {
+      document.getElementById("errorMessage3").innerHTML = "Input not valid";
+      style.style.backgroundColor = "red";
+      return false;
+    } else {
+      document.getElementById("errorMessage3").innerHTML = "";
+      style.style.backgroundColor = "white";
+      return  true;
+    }
+  }
+  //checks for appropriate inputs and notifies the user if not
+  function valueCheck4() {
+    var x;
+    var style = document.getElementById("paymentsPerYearInput");
+    x = parseFloat(document.getElementById("paymentsPerYearInput").value);
+    if (isNaN(x) || x <= 0 ) {
+      document.getElementById("errorMessage4").innerHTML = "Input not valid";
+      style.style.backgroundColor = "red";
+      return false;
+    } else {
+      document.getElementById("errorMessage4").innerHTML = "";
+      style.style.backgroundColor = "white";
+      return true;
+    }
+  }
+  function valueCheck5() {
+    var x;
+    x = document.getElementById("payment").innerText;
+    if (x == "") {
+      return false;
+    } else {
+      return true;
+    }
+  }
+</script>
+
+</head>
+
+<body class="body-group">
+  <header  class="header-group">
+    <div >
+      <div class="heading">
+        <h1 >Week 7 JavaScript Calculator</h1>
+    </div>
+      <nav >
+        <ul class="navigation">
+          <li><a class="ham" href="#">&#9776; Menu</a></li>
+          <li><a class="index" href="../index.html">CS213 Assignments</a></li>
+
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero-image">
+  </div>
+
+  <div class="main-content">
+    <div class="content-grid">
+      <div id="output">
+        <div id="outputHeading">
+          <h2>What will your monthly payment be?</h2>
+          <p>Please fill out the form and click "compute payment." Once the form is filled out it will auto update if you make changes.  Please input valid information.</p>
+        </div>
+        <div id="payment"></div>
+      </div>
+      <div id="formDiv">
+        <form id="calcForm">
+          <p>APR - Annual Percentage Rate (between 0 and 25.00) 
+          <input type="text" id="apr" name="apr" onfocusout="valueCheck1()" onmouseout="valueCheck1()" onchange="calculateFunc2()" size="10" placeholder="APR"><span id="errorMessage1"></span></p>
+          <p>Loan Term in years (between 0 and 40) 
+          <input type="text" id="term" name="amount" onfocusout="valueCheck2()" onmouseout="valueCheck2()" onchange="calculateFunc2()" size="10" placeholder="TERM"><span id="errorMessage2"></span></p>
+          <p>Loan Amount - (in dollars) 
+          <input type="text" id="amount" name="amount" onfocusout="valueCheck3()" onmouseout="valueCheck3()" onchange="calculateFunc2()" size="10" placeholder="LOAN AMOUNT"><span id="errorMessage3"></span></p>
+          <p>Payments per year 
+          <input type="text" id="paymentsPerYearInput" name="paymentsPerYearInput" onfocusout="valueCheck4()" onmouseout="valueCheck4()" onchange="calculateFunc2()" size="10" placeholder="PAY PER YEAR"><span id="errorMessage4"></p></span>
+          <button type="button"  id="calculate" onclick = "calculateFunc()">Compute payment</button>  <button type="button" id="clear" onclick="formReset()" value="Reset form"> RESET </button> 
+        </form>
+      </div>
+      
+     
+    </div>
+  </div>
+  
+
+  <footer class="footer-content">
+    <p>&copy; 2020 | Darrin Fry | Utah |
+    <a href="https://www.byui.edu/online " target="_blank" >BYUI Online Learning</a> </p>
+    <script>
+      const hambutton = document.querySelector(".ham");
+      hambutton.addEventListener("click", toggleMenu, false);
+
+      function toggleMenu() {
+        document.querySelector(".navigation").classList.toggle("responsive");
+      }
+    </script>
+  </footer>
+  
+</body>
+</html>

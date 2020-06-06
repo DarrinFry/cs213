@@ -1,0 +1,25 @@
+
+ //takes the user input form the doBalance, as well as the returned number from conputePayment, and caluculates the remaining balance. This is stored for futre use.
+ function computeBalance(principal, annualRate, years, periodsPerYear, numberOfPaymentPaidToDate) {
+     let r = annualRate / periodsPerYear;
+     let d = numberOfPaymentPaidToDate;
+     let p = Math.round(computePayment(principal, annualRate, years, periodsPerYear) * 100) / 100;
+     let b = (principal*(1+r)**d)-(p*(((1+r)**d)-1)/r);
+     return b;
+ }
+
+//takes customer input and passes it through the conputeBalance function, which is then returned back to this function for printing.
+function doBalance(){
+    let principal = parseFloat(document.getElementById("amount").value);
+    let rate = parseFloat(document.getElementById("apr").value);
+    let years = parseFloat(document.getElementById("term").value);
+    let periods = parseFloat(document.getElementById("paymentsPerYearInput").value);
+    let toDate = parseFloat(document.getElementById("paidToDateInput").value);
+    let value = computeBalance(principal, rate, years, periods, toDate);
+    let result = Math.round(value * 100) / 100;
+    document.getElementById("answerOutPut2").innerHTML = "$" + result; 
+}
+
+
+    Number of payments paid to date <input type="text" id="paidToDateInput" size="10"><br>
+    <button type="button"onclick = "doBalance()"> Compute payoff amount</button>  <div id="answerOutPut2"></div>
