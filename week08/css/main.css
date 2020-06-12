@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Oswald:wght@500&family=Roboto+Slab:wght@900&display=swap");
+nav, footer {
+  background-color: silver;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around; }
+
+nav li .current {
+  background-color: rgba(255, 255, 255, 0.6); }
+
+.navigation {
+  list-style: none;
+  padding: 0em; }
+
+.navigation li:first-child {
+  display: block; }
+
+.navigation li {
+  display: none; }
+
+.navigation a {
+  display: block;
+  color: black;
+  padding: 0.5rem;
+  text-align: center;
+  text-decoration: none; }
+
+.navigation .active {
+  background-color: royalblue; }
+
+.navigation a:hover {
+  color: #000;
+  background-color: rgba(255, 255, 255, 0.6);
+  font-weight: 700; }
+
+.responsive li {
+  display: block; }
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif; }
+
+.hero-image {
+  background-image: url("../images/Render (June 09, 204920).png");
+  background-color: #cccccc;
+  height: 400px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative; }
+
+h1, h3 {
+  text-align: center; }
+
+h1 {
+  font-family: "Roboto Slab", serif;
+  padding-top: 20px;
+  margin-top: 0; }
+
+h3 {
+  padding-bottom: 20px;
+  margin-bottom: 0;
+  font-family: "Oswald", sans-serif; }
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 80%;
+  margin: auto;
+  padding: 20px; }
+
+@media (min-width: 700px) {
+  .navigation {
+    display: flex; }
+
+  .navigation li {
+    display: block;
+    flex: 1 1 100%; }
+
+  .navigation li a {
+    margin-left: 20px;
+    text-align: center; }
+
+  .navigation li:first-child {
+    display: none; }
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 80%;
+    margin: auto;
+    padding: 20px; } }
+@media (min-width: 1000px) {
+  .navigation {
+    display: flex; }
+
+  .navigation li {
+    display: block;
+    flex: 1 1 100%; }
+
+  .navigation li a {
+    margin-left: 20px;
+    text-align: center; }
+
+  .navigation li:first-child {
+    display: none; } }
+
+/*# sourceMappingURL=main.css.map */

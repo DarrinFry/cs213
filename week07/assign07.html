@@ -100,10 +100,16 @@
       }
       //takes the user input from calculate and calculates the monthly payment, which is then returned for future use.
       function computePayment(principal, annualRate, years, periodsPerYear) {
+          if (annualRate == 0) {
+            let p = (principal / (years*periodsPerYear))
+            return p
+          }
+          else {
           let r = annualRate / periodsPerYear;
           let n = years * periodsPerYear;
           let p = (principal*r)/(1-(1+r)**-n);
           return p;
+          }
      }
      //reset the form
      function formReset() {
