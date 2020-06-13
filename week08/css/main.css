@@ -71,6 +71,32 @@ h3 {
   margin: auto;
   padding: 20px; }
 
+.gallery-group {
+  max-width: 98%;
+  margin: .1rem auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center; }
+
+img {
+  max-width: 95%;
+  height: auto; }
+
+figcaption {
+  width: 80%; }
+
+figure {
+  margin-block-start: .20em;
+  margin-block-end: .20em;
+  margin-inline-start: .20em;
+  margin-inline-end: .20em; }
+
+.checkBoxBorder {
+  border: 3px solid black; }
+
+#hideInput {
+  display: none; }
+
 @media (min-width: 700px) {
   .navigation {
     display: flex; }
@@ -88,7 +114,7 @@ h3 {
 
   .content-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     gap: 2rem;
     max-width: 80%;
     margin: auto;

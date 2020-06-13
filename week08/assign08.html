@@ -7,16 +7,15 @@
   <link rel="stylesheet" href="./css/main.css">
   <title>Darrin Fry Week 8 JavaScript Calculator With Additional Form Validation</title>
   <meta name="description" content="A calculator for CS213 Week 7">
-
- 
-
+  
 </head>
 
-<body class="body-group">
+<body class="body-group" onload="checkTotal()">
   <header  class="header-group">
     <div >
       <div class="heading">
-        <h1 >Week 7 JavaScript Calculator With Additional Form Validation</h1>
+        <h1 >Week 8 JavaScript Calculator With Additional Form Validation</h1>
+        <h3>(and some pretty jewelry too)</h3>
     </div>
       <nav >
         <ul class="navigation">
@@ -34,15 +33,86 @@
   <div class="main-content">
     <div class="content-grid">
       <div id="output">
-        <div class="productGallery">
-          <h2>What will your monthly payment be?</h2>
-          <p>Please fill out the form and click "compute payment." Once the form is filled out it will auto update if you make changes.  Please input valid information.</p>
+
+        <form name="listForm" class="gallery-group">
+          <figure>
+            <img src="./images/03092018a.jpg" alt="diamond and sapphire ring">
+            <figcaption>Two Tone ring featuring white diamonds and bluesapphires</figcaption>
+            <div class="checkBoxBorder" >
+            <input type="checkbox" name="choice" value="1234.56" onchange="checkTotal()"/>$1234.56<br/>
+          </div>
+          </figure>
+          <figure>
+            <img src="./images/03262018b.jpg" alt="diamond and emerald ring">
+            <figcaption>Platinum and diamond art-deco inspired ring accented with emeralds.</figcaption>
+            <div class="checkBoxBorder" >
+            <input type="checkbox" name="choice" value="2345.67" onchange="checkTotal()"/>$2345.67<br/>
+          </div>
+          </figure>
+          <figure>
+            <img src="./images/06072018a.jpg" alt="pearl and diamond ring">
+            <figcaption>A black tahitian pearl accented with diamonds in a modern mounting</figcaption>
+            <div class="checkBoxBorder" >
+            <input type="checkbox" name="choice" value="3456.78" onchange="checkTotal()"/>$3456.78<br/>
+          </div>
+          </figure>
+          <figure>
+            <img src="./images/04252018b.jpg" alt="aquamarine and diamond ring">
+            <figcaption>A substantial aquamarine framed with colorless diamonds.</figcaption>
+            <div class="checkBoxBorder" >
+            <input type="checkbox" name="choice" value="4567.89" onchange="checkTotal()"/>$4567.89<br/>
+          </div>
+          </figure>
+          <figure>
+            <img src="./images/06152018a.jpg" alt="diamond and pink sapphire ring">
+            <figcaption>A double halo ring featuring diamonds and bright pink sapphires.</figcaption>
+            <div class="checkBoxBorder" >
+            <input type="checkbox" name="choice" value="5678.90" onchange="checkTotal()"/>$5678.90<br/>
+          </div>
+          </figure>
+          <figure>
+            <img src="./images/10172017A.jpg" alt="diamond and sapphire ring">
+            <figcaption>A bright round diamond framed by more bright diamonds and accented with deep blue sapphires.</figcaption>
+            <div class="checkBoxBorder" >
+            <input type="checkbox" name="choice" value="6789.01" onchange="checkTotal()"/>$6789.01<br/>
+          </div>
+          </figure>
+          <figure>
+            <img src="./images/12112017a.jpg" alt="diamond two tone ring">
+            <figcaption>A modern rose and white gold ring with colorless diamonds.</figcaption>
+            <div class="checkBoxBorder" >
+            <input type="checkbox" name="choice" value="7890.12" onchange="checkTotal()"/>$7890.12<br/>
+          </div>
+          </figure>
+          <figure>
+            <img src="./images/MatrixGold-Render-Test-2.jpg" alt="diamond and pink tourmaline ring">
+            <figcaption> Pink tourmaline frame the substantial oval diamond.</figcaption>
+            <div class="checkBoxBorder" >
+            <input type="checkbox" name="choice" value="8901.23" onchange="checkTotal()"/>$8901.23<br/>
+          </div>
+          </figure>
+          <figure>
+            <img src="./images/Molinellis-Craig-Oval-Cluster-5.jpg" alt="diamond cluster ring">
+            <figcaption>A diamond cluster ring set in rose and white gold.</figcaption>
+            <div class="checkBoxBorder" >
+            <input type="checkbox" name="choice" value="9012.34" onchange="checkTotal()"/>$9012.34<br/>
+          </div>
+          </figure>
+
+           <input type="text" size="2" name="total" value="0" size="10" id="hideInput"/>
+        </form>
+
+
+        <div>
+          
         </div>
-        <div id="payment"></div>
+        <div>
+          
+        </div>
       </div>
-      <div class="inventory">
-        <label>Total:</label>
-          <input>
+      <div >          
+        <h2>Total: </h2> <span id="mirror"></span>
+
       </div>
       <div class="formDiv">
         <form id="contactForm">
@@ -74,7 +144,7 @@
         </form> 
       </div> 
       <div class="formDiv"> 
-        <form id="creditCard"> 
+        <form id="contactForm2"> 
           <label>Credit Card Type:</label>
           <br>
           <input type="radio" id="visa" name="card" >
@@ -117,7 +187,7 @@
     </script>
     <script>
       function validateEmail()
-      {
+        {
           var emailTextBox = document.getElementById("txtEmail");
           var email = emailTextBox.value;
           var emailRegEx = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -134,11 +204,9 @@
               emailTextBox.style.backgroundColor = "red";
               return false;
           }
-      } // This script was learned by using the tutorial found in this youtube video https://www.youtube.com/watch?v=0Niin-szO60
-    </script>
+        } // This script was learned by using the tutorial found in this youtube video https://www.youtube.com/watch?v=0Niin-szO60
 
-    <script>
-      //using what was learned from the script above I was able to do more valdiation.
+      //using what was learned from the script above I was able to do more valdiation as found in the next functions
       function validatePhone() {
         var phoneNumber = document.getElementById("phone");
         var phone = phoneNumber.value;
@@ -187,131 +255,31 @@
           return false;
         }
       }
-    </script>
-     <script>
-      //takes customer input and passes it through the computePayment function, which is then returned back to this function for printing.
-      function calculateFunc(){
-        let check1 = valueCheck1();
-        let check2 = valueCheck2();
-        let check3 = valueCheck3();
-        let check4 = valueCheck4();
-        if (check1 == true && check2 == true && check3 == true && check4 == true){
-          let principal = parseFloat(document.getElementById("amount").value);
-          let rate = (parseFloat(document.getElementById("apr").value) / 100);
-          let years = parseFloat(document.getElementById("term").value);
-          let periods = parseFloat(document.getElementById("paymentsPerYearInput").value);
-          let value = computePayment(principal, rate, years, periods);
-          let result = Math.round(value * 100) / 100;
-          document.getElementById("payment").innerHTML = "Your monthly payment will be $" + result; 
-          document.getElementById("payment").style.backgroundColor = "yellow";
-          document.getElementById("payment").style.fontWeight = "bold";
-        } else {
-        document.getElementById("payment").innerHTML = " Please fill out all boxes with correct information";
-        document.getElementById("payment").style.backgroundColor = "orange";
+      function checkTotal() {
+      document.listForm.total.value = '';
+      var sum = 0;
+      for (i=0;i<document.listForm.choice.length;i++) {
+        if (document.listForm.choice[i].checked) {
+          sum = sum + parseFloat(document.listForm.choice[i].value);
         }
       }
-      function calculateFunc2(){
-        let check5 = valueCheck5();
-        if (check5 == true){
-          calculateFunc();        
-        }
-      }
-      //takes the user input from calculate and calculates the monthly payment, which is then returned for future use.
-      function computePayment(principal, annualRate, years, periodsPerYear) {
-          if (annualRate == 0) {
-            let p = (principal / (years*periodsPerYear))
-            return p
-          }
-          else {
-          let r = annualRate / periodsPerYear;
-          let n = years * periodsPerYear;
-          let p = (principal*r)/(1-(1+r)**-n);
-          return p;
-          }
+      document.listForm.total.value = sum;
+      document.getElementById("mirror").innerHTML = "$" + sum;
+
+    }
+    
+      //reset the form
+      function formReset() {    
+        document.getElementById("contactForm").reset();
+        document.getElementById("phone").style.backgroundColor = "white";
+        document.getElementById("txtEmail").style.backgroundColor = "white";
+        document.getElementById("first_name").focus();
+        document.getElementById("credit_card").value = ""
+        document.getElementById("exp_date").value = ""
+        document.getElementById("credit_card").style.backgroundColor = "white";
+        document.getElementById("exp_date").style.backgroundColor = "white";
      }
-     //reset the form
-     function formReset() {
-      document.getElementById("calcForm").reset();
-      document.getElementById("errorMessage1").innerHTML = "";
-      document.getElementById("errorMessage2").innerHTML = "";
-      document.getElementById("errorMessage3").innerHTML = "";
-      document.getElementById("errorMessage4").innerHTML = "";
-      document.getElementById("payment").innerHTML = "";
-      document.getElementById("apr").style.backgroundColor = "white";
-      document.getElementById("term").style.backgroundColor = "white";
-      document.getElementById("amount").style.backgroundColor = "white";
-      document.getElementById("paymentsPerYearInput").style.backgroundColor = "white";
-      document.getElementById("apr").focus()
-     }
-     //checks for appropriate inputs and notifies the user if not
-    function valueCheck1() {
-      var x;
-      var style = document.getElementById("apr");
-      x = parseFloat(document.getElementById("apr").value);
-      if (isNaN(x) || x < 0 || x > 25) {
-        document.getElementById("errorMessage1").innerHTML = "Input not valid";
-        style.style.backgroundColor = "red";
-        return false;
-      } else {
-        document.getElementById("errorMessage1").innerHTML = "";
-        style.style.backgroundColor = "white";
-        return true;
-      }
-    }
-    //checks for appropriate inputs and notifies the user if not
-    function valueCheck2() {
-      var x;
-      var style = document.getElementById("term");
-      x = parseFloat(document.getElementById("term").value);
-      if (isNaN(x) || x <= 0 || x > 40) {
-        document.getElementById("errorMessage2").innerHTML = "Input not valid";
-        style.style.backgroundColor = "red";
-        return false;
-      } else {
-        document.getElementById("errorMessage2").innerHTML = "";
-        style.style.backgroundColor = "white";
-        return true;
-      }
-    }
-    //checks for appropriate inputs and notifies the user if not
-    function valueCheck3() {
-      var x;
-      var style = document.getElementById("amount");
-      x = parseFloat(document.getElementById("amount").value);
-      if (isNaN(x) || x <= 0 ) {
-        document.getElementById("errorMessage3").innerHTML = "Input not valid";
-        style.style.backgroundColor = "red";
-        return false;
-      } else {
-        document.getElementById("errorMessage3").innerHTML = "";
-        style.style.backgroundColor = "white";
-        return  true;
-      }
-    }
-    //checks for appropriate inputs and notifies the user if not
-    function valueCheck4() {
-      var x;
-      var style = document.getElementById("paymentsPerYearInput");
-      x = parseFloat(document.getElementById("paymentsPerYearInput").value);
-      if (isNaN(x) || x <= 0 ) {
-        document.getElementById("errorMessage4").innerHTML = "Input not valid";
-        style.style.backgroundColor = "red";
-        return false;
-      } else {
-        document.getElementById("errorMessage4").innerHTML = "";
-        style.style.backgroundColor = "white";
-        return true;
-      }
-    }
-    function valueCheck5() {
-      var x;
-      x = document.getElementById("payment").innerText;
-      if (x == "") {
-        return false;
-      } else {
-        return true;
-      }
-    }
+     
   </script>
   </footer>
   

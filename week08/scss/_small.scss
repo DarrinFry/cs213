@@ -78,4 +78,30 @@ h3{
     padding: 20px;
   }
 
-  
+  .gallery-group {
+    max-width: 98%;
+    margin: .1rem auto; 
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    justify-content: center;
+  }
+  img {
+    max-width: 95%;
+    height: auto;
+  }
+ 
+  figcaption {
+    width: 80%;
+  }
+  figure {
+    margin-block-start: .20em;
+    margin-block-end: .20em;
+    margin-inline-start: .20em;
+    margin-inline-end: .20em;
+  }
+.checkBoxBorder {
+  border: 3px solid black;
+}
+#hideInput{
+  display: none;
+}
