@@ -51,7 +51,7 @@ body {
   background-size: cover;
   position: relative; }
 
-h1, h3 {
+h1, h2, h3 {
   text-align: center; }
 
 h1 {
@@ -96,6 +96,12 @@ figure {
 
 #hideInput {
   display: none; }
+
+.formDiv {
+  padding: 40px;
+  margin-top: 40px;
+  margin: auto;
+  width: 60%; }
 
 @media (min-width: 700px) {
   .navigation {

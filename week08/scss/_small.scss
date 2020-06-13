@@ -56,7 +56,7 @@ body {
 }
 
 
-h1, h3 {
+h1, h2, h3 {
   text-align: center;
 }
 h1 {
@@ -104,4 +104,10 @@ h3{
 }
 #hideInput{
   display: none;
+}
+.formDiv {
+  padding: 40px;
+  margin-top: 40px;
+  margin: auto;
+  width: 60%;
 }
