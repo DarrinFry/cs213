@@ -36,71 +36,53 @@
       <div id="output">
 
         <form name="listForm" class="gallery-group">
-          <figure>
+          <div >
             <img src="./images/03092018a.jpg" alt="diamond and sapphire ring">
-            <figcaption>Two Tone ring featuring white diamonds and bluesapphires</figcaption>
-            <div class="checkBoxBorder" >
+            <p>Two Tone ring featuring white diamonds and bluesapphires</p>
             <input type="checkbox" name="choice" value="1234.56" onchange="checkTotal()"/>$1234.56<br/>
           </div>
-          </figure>
-          <figure>
+          <div>
             <img src="./images/03262018b.jpg" alt="diamond and emerald ring">
-            <figcaption>Platinum and diamond art-deco inspired ring accented with emeralds.</figcaption>
-            <div class="checkBoxBorder" >
+            <p>Platinum and diamond art-deco inspired ring accented with emeralds.</p>
             <input type="checkbox" name="choice" value="2345.67" onchange="checkTotal()"/>$2345.67<br/>
           </div>
-          </figure>
-          <figure>
+          <div>
             <img src="./images/06072018a.jpg" alt="pearl and diamond ring">
-            <figcaption>A black tahitian pearl accented with diamonds in a modern mounting</figcaption>
-            <div class="checkBoxBorder" >
+            <p>A black tahitian pearl accented with diamonds in a modern mounting</p>
             <input type="checkbox" name="choice" value="3456.78" onchange="checkTotal()"/>$3456.78<br/>
           </div>
-          </figure>
-          <figure>
+          <div>
             <img src="./images/04252018b.jpg" alt="aquamarine and diamond ring">
-            <figcaption>A substantial aquamarine framed with colorless diamonds.</figcaption>
-            <div class="checkBoxBorder" >
+            <p>A substantial aquamarine framed with colorless diamonds.</p>
             <input type="checkbox" name="choice" value="4567.89" onchange="checkTotal()"/>$4567.89<br/>
           </div>
-          </figure>
-          <figure>
+          <div>
             <img src="./images/06152018a.jpg" alt="diamond and pink sapphire ring">
-            <figcaption>A double halo ring featuring diamonds and bright pink sapphires.</figcaption>
-            <div class="checkBoxBorder" >
+            <p>A double halo ring featuring diamonds and bright pink sapphires.</p>
             <input type="checkbox" name="choice" value="5678.90" onchange="checkTotal()"/>$5678.90<br/>
           </div>
-          </figure>
-          <figure>
+          <div>
             <img src="./images/10172017A.jpg" alt="diamond and sapphire ring">
-            <figcaption>A bright round diamond framed by more bright diamonds and accented with deep blue sapphires.</figcaption>
-            <div class="checkBoxBorder" >
+            <p>A bright round diamond framed by more bright diamonds and accented with deep blue sapphires.</p>
             <input type="checkbox" name="choice" value="6789.01" onchange="checkTotal()"/>$6789.01<br/>
           </div>
-          </figure>
-          <figure>
+          <div>
             <img src="./images/12112017a.jpg" alt="diamond two tone ring">
-            <figcaption>A modern rose and white gold ring with colorless diamonds.</figcaption>
-            <div class="checkBoxBorder" >
+            <p>A modern rose and white gold ring with colorless diamonds.</p>
             <input type="checkbox" name="choice" value="7890.12" onchange="checkTotal()"/>$7890.12<br/>
           </div>
-          </figure>
-          <figure>
+          <div>
             <img src="./images/MatrixGold-Render-Test-2.jpg" alt="diamond and pink tourmaline ring">
-            <figcaption> Pink tourmaline frame the substantial oval diamond.</figcaption>
-            <div class="checkBoxBorder" >
+            <p> Pink tourmaline frame the substantial oval diamond.</p>
             <input type="checkbox" name="choice" value="8901.23" onchange="checkTotal()"/>$8901.23<br/>
           </div>
-          </figure>
-          <figure>
+          <div>
             <img src="./images/Molinellis-Craig-Oval-Cluster-5.jpg" alt="diamond cluster ring">
-            <figcaption>A diamond cluster ring set in rose and white gold.</figcaption>
-            <div class="checkBoxBorder" >
+            <p>A diamond cluster ring set in rose and white gold.</p>
             <input type="checkbox" name="choice" value="9012.34" onchange="checkTotal()"/>$9012.34<br/>
           </div>
-          </figure>
 
-           <input type="text" size="2" name="total" value="0" size="10" id="hideInput"/>
+           <input type="text" name="total" value="0" size="10" id="hideInput"/>
         </form>
 
 
@@ -123,23 +105,23 @@
         <form id="contactForm">
           <label>First Name:</label>
           <br>
-          <input type="text" id="first_name" name="first_name" onblur="valueCheck1()" onmouseout="valueCheck1()" onchange="calculateFunc2()" size="10" placeholder="First Name"><span id="errorMessage1"></span></p>
+          <input type="text" id="first_name" name="first_name"  size="10" placeholder="First Name">
           <br>
           <label>Last Name:</label>
           <br>
-          <input type="text" id="last_name" name="last_name" onblur="valueCheck1()" onmouseout="valueCheck1()" onchange="calculateFunc2()" size="10" placeholder="Last Name"><span id="errorMessage1"></span></p>
+          <input type="text" id="last_name" name="last_name"  size="10" placeholder="Last Name">
           <br>
           <label>Address:</label>
           <br>
-          <input type="text" id="street_address" name="address" onblur="valueCheck1()" onmouseout="valueCheck1()" onchange="calculateFunc2()" size="10" placeholder="Street Address"><span id="errorMessage1"></span></p>
-          <input type="text" id="city" name="address" onblur="valueCheck1()" onmouseout="valueCheck1()" onchange="calculateFunc2()" size="10" placeholder="City"><span id="errorMessage1"></span></p>
-          <input type="text" id="state" name="address" onblur="valueCheck1()" onmouseout="valueCheck1()" onchange="calculateFunc2()" size="10" placeholder="State"><span id="errorMessage1"></span></p>
-          <input type="text" id="zipcode" name="address" onblur="valueCheck1()" onmouseout="valueCheck1()" onchange="calculateFunc2()" size="10" placeholder="Zipcode"><span id="errorMessage1"></span></p>
+          <input type="text" id="street_address" name="address" size="10" placeholder="Street Address">
+          <input type="text" id="city" name="address" size="10" placeholder="City">
+          <input type="text" id="state" name="address" size="10" placeholder="State">
+          <input type="text" id="zipcode" name="address" size="10" placeholder="Zipcode">
           
           <br>
           <label>Phone:</label>
           <br>
-          <input type="text" id="phone" name="phone" onkeyup="validatePhone()" onblur="valueCheck1()" onmouseout="valueCheck1()" onchange="calculateFunc2()" size="10" placeholder="301-955-6640"><span id="errorMessage1"></span></p>
+          <input type="text" id="phone" name="phone" onkeyup="validatePhone()" size="10" placeholder="301-955-6640">
           <br>
           <label>Email:</label>
           <br>
@@ -162,11 +144,11 @@
           <br>
           <label>Credit Card Number:</label>
           <br>
-          <input type="text" id="credit_card" name="credit_card" onkeyup="validateCardNumber()" onblur="valueCheck1()" onmouseout="valueCheck1()" onchange="calculateFunc2()" size="16" placeholder="Credit Card"><span id="errorMessage1"></span></p>
+          <input type="text" id="credit_card" name="credit_card" onkeyup="validateCardNumber()" size="16" placeholder="Credit Card">
           <br>
           <label>Credit Card Expiration:</label>
           <br>
-          <input type="text" id="exp_date" name="exp_date" onkeyup="validateExp()" onblur="valueCheck1()" onmouseout="valueCheck1()" onchange="calculateFunc2()" size="10" placeholder="01/2020"><span id="errorMessage1"></span></p>
+          <input type="text" id="exp_date" name="exp_date" onkeyup="validateExp()" size="10" placeholder="01/2020">
           <br>
                     
           <button type="button"  id="validate" onclick = "calculateFunc()">Submit</button>  <button type="button" id="reset" onclick="formReset()" value="Reset form"> RESET </button> 
