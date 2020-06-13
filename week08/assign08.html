@@ -60,10 +60,17 @@
           <input type="text" id="city" name="address" onblur="valueCheck1()" onmouseout="valueCheck1()" onchange="calculateFunc2()" size="10" placeholder="City"><span id="errorMessage1"></span></p>
           <input type="text" id="state" name="address" onblur="valueCheck1()" onmouseout="valueCheck1()" onchange="calculateFunc2()" size="10" placeholder="State"><span id="errorMessage1"></span></p>
           <input type="text" id="zipcode" name="address" onblur="valueCheck1()" onmouseout="valueCheck1()" onchange="calculateFunc2()" size="10" placeholder="Zipcode"><span id="errorMessage1"></span></p>
+          
+          <br>
           <label>Phone:</label>
           <br>
-          <input type="text" id="phone" name="phone" onblur="valueCheck1()" onmouseout="valueCheck1()" onchange="calculateFunc2()" size="10" placeholder="Phone Number"><span id="errorMessage1"></span></p>
+          <input type="text" id="phone" name="phone" onkeyup="validatePhone()" onblur="valueCheck1()" onmouseout="valueCheck1()" onchange="calculateFunc2()" size="10" placeholder="301-955-6640"><span id="errorMessage1"></span></p>
           <br>
+          <label>Email:</label>
+          <br>
+          <input type="text" id="txtEmail" onkeyup="validateEmail()" >
+          <br>
+
         </form> 
       </div> 
       <div class="formDiv"> 
@@ -80,16 +87,17 @@
           <br>
           <label>Credit Card Number:</label>
           <br>
-          <input type="text" id="credit_card" name="credit_card" onblur="valueCheck1()" onmouseout="valueCheck1()" onchange="calculateFunc2()" size="16" placeholder="Credit Card"><span id="errorMessage1"></span></p>
+          <input type="text" id="credit_card" name="credit_card" onkeyup="validateCardNumber()" onblur="valueCheck1()" onmouseout="valueCheck1()" onchange="calculateFunc2()" size="16" placeholder="Credit Card"><span id="errorMessage1"></span></p>
           <br>
           <label>Credit Card Expiration:</label>
           <br>
-          <input type="text" id="exp_date" name="exp_date" onblur="valueCheck1()" onmouseout="valueCheck1()" onchange="calculateFunc2()" size="10" placeholder="01/2020"><span id="errorMessage1"></span></p>
+          <input type="text" id="exp_date" name="exp_date" onkeyup="validateExp()" onblur="valueCheck1()" onmouseout="valueCheck1()" onchange="calculateFunc2()" size="10" placeholder="01/2020"><span id="errorMessage1"></span></p>
           <br>
                     
           <button type="button"  id="validate" onclick = "calculateFunc()">Submit</button>  <button type="button" id="reset" onclick="formReset()" value="Reset form"> RESET </button> 
         </form>
       </div>
+
       
      
     </div>
@@ -105,6 +113,79 @@
 
       function toggleMenu() {
         document.querySelector(".navigation").classList.toggle("responsive");
+      }
+    </script>
+    <script>
+      function validateEmail()
+      {
+          var emailTextBox = document.getElementById("txtEmail");
+          var email = emailTextBox.value;
+          var emailRegEx = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  
+          emailTextBox.style.color = "white";
+  
+          if (emailRegEx.test(email))
+          {
+              emailTextBox.style.backgroundColor = "green";
+              return true;
+          }
+          else
+          {
+              emailTextBox.style.backgroundColor = "red";
+              return false;
+          }
+      } // This script was learned by using the tutorial found in this youtube video https://www.youtube.com/watch?v=0Niin-szO60
+    </script>
+
+    <script>
+      //using what was learned from the script above I was able to do more valdiation.
+      function validatePhone() {
+        var phoneNumber = document.getElementById("phone");
+        var phone = phoneNumber.value;
+        var phoneRegEx = /^[0-9]{3}-[0-9]{3}-[0-9]{4}/;
+
+        phoneNumber.style.color = "white";
+
+        if (phoneRegEx.test(phone)) {
+          phoneNumber.style.backgroundColor = "green";
+          return true;
+        }
+        else {
+          phoneNumber.style.backgroundColor = "red";
+          return false;
+        }
+      }
+      function validateCardNumber() {
+        var cardNumber = document.getElementById("credit_card");
+        var card = cardNumber.value;
+        var cardRegEx = /^[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}/;
+
+        cardNumber.style.color = "white";
+
+        if (cardRegEx.test(card)) {
+          cardNumber.style.backgroundColor = "green";
+          return true;
+        }
+        else {
+          cardNumber.style.backgroundColor = "red";
+          return false;
+        }
+      }
+      function validateExp() {
+        var cardExp = document.getElementById("exp_date");
+        var exp = cardExp.value;
+        var expRegEx = /^(0[1-9]|1[0-2])\/(20[2-8][0-9]|209[0-9])/;
+
+        cardExp.style.color = "white";
+
+        if (expRegEx.test(exp)) {
+          cardExp.style.backgroundColor = "green";
+          return true;
+        }
+        else {
+          cardExp.style.backgroundColor = "red";
+          return false;
+        }
       }
     </script>
      <script>
