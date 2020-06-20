@@ -1,0 +1,104 @@
+
+nav, footer {
+  background-color:$secondaryColor;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+nav li .current {
+  background-color: rgba(255, 255, 255, .60);
+}
+.navigation {
+  list-style: none;
+  padding: 0em;
+}
+.navigation li:first-child {
+  display: block;
+}
+.navigation li {
+  display: none;
+}
+.navigation a {
+  display: block;
+  color: black;
+  padding: 0.5rem;
+  text-align: center;
+  text-decoration: none;
+}
+.navigation .active{
+  background-color: $mainColor;
+}
+.navigation a:hover {
+color: #000;
+  background-color: rgba(255, 255, 255, .60);
+  font-weight: 700;
+}
+.responsive li {
+	display: block;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: $paraFont;
+}
+.hero-image {
+  background-image: url("../images/Render\ \(June\ 09\,\ 204920\).png");
+  background-color: #cccccc;
+  height: 400px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+   
+}
+
+h1, h2, h3 {
+  text-align: center;
+}
+h1 {
+  font-family: $universityFont;
+  padding-top: 20px;
+  margin-top: 0;
+}
+h3{
+  padding-bottom: 20px;
+  margin-bottom: 0;
+  font-family: $headingFont;
+}
+.middle-bar {
+  background-color: $secondaryColor;
+  padding: 10px;
+}
+.cities, .student {
+  display: block;
+  text-align: center;
+  margin: auto;
+}
+form {
+  display: inline-block;
+  align-items: center;
+}
+#cities {
+  display: block;
+  align-items: center;
+  margin: 20px;
+}
+#info {
+  padding: 10px;
+  margin: 20px;
+
+}
+table {
+  
+  margin: auto;
+}
+table,th,td {
+  border : 1px solid black;
+  border-collapse: collapse;
+}
+th,td {
+  padding: 5px;
+}
