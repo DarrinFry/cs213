@@ -29,7 +29,6 @@
         xhttp.open("GET", input, true);
         xhttp.send();
       }
-
 function largestCities(response) {
   var cities = response.split(/\s{2,25}|\n/);
   var table = "<table><tr><th>City:</th><th>Population:</th></tr>";
@@ -44,7 +43,6 @@ function largestCities(response) {
   table += "</table>";
   document.getElementById('cities').innerHTML = table;
 };
-                
 function jsonRequest(response) {                 
   var data = JSON.parse(response);
   var table = "<table><tr><th>First Name:</th><th>Last Name:</th><th>City:</th><th>State:</th><th>ZIP Code:</th><th>Major:</th><th>GPA:</th></tr>";
@@ -65,12 +63,11 @@ function jsonRequest(response) {
     data.students[i].gpa;
   }
   document.getElementById('info').innerHTML = table;
- 
 };
   </script>
 </head>
 
-<body class="body-group"">
+<body class="body-group">
   <header  class="header-group">
     <div >
       <div class="heading">
