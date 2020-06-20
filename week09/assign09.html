@@ -30,7 +30,7 @@
         xhttp.send();
       }
 function largestCities(response) {
-  var cities = response.split(/\s{2,25}|\n/);
+  var cities = response.split(/\s{2,}|\n/);
   var table = "<table><tr><th>City:</th><th>Population:</th></tr>";
   for (i = 0; i < cities.length - 1; i++) {
     table += "<tr><td>" + 
