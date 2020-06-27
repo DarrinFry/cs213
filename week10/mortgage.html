@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Lobster&family=Roboto&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./css/main.css">
+  <title>Darrin Fry Week 10 Mortgage with PHP</title>
+  <meta name="description" content="A calculator for CS213 Week 10">
+
+
+
+</head>
+
+<body class="body-group">
+  <header class="header-group">
+    <div>
+      <div class="heading">
+        <h1>Week 10 Mortgage with PHP</h1>
+      </div>
+      <nav>
+        <ul class="navigation">
+          <li><a class="ham" href="#">&#9776; Menu</a></li>
+          <li><a class="index" href="../index.html">CS213 Assignments</a></li>
+
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero-image">
+  </div>
+
+  <div class="main-content">
+    <div class="content-grid">
+      <div id="output">
+        <div id="outputHeading">
+          <h2>What will your monthly payment be?</h2>
+          <p>Please fill out the form and click "compute payment." Once the form is filled out it will auto update if
+            you make changes. Please input valid information.</p>
+        </div>
+        <div id="payment"></div>
+      </div>
+      <div id="formDiv">
+        <form onkeyup="validateFields()" action="./mortgage.php" method="GET">
+          <div>
+            <label for="apr">Annual Percentage Rate:</label>
+            <input type="text" id="apr" name="apr" placeholder="4.25" oninput="validateApr()" required /><br><br>
+
+            <label for="term">Term (In Years):</label>
+            <input type="text" id="term" name="term" placeholder="30" oninput="validateTerm()" required /><br><br>
+
+            <label for="amount">Loan Amount:</label>
+            <input type="text" id="amount" name="amount" placeholder="325000" oninput="validateLoan()"
+              required /><br><br>
+
+            <!-- <label for="payment">Monthly Payment:</label>
+              <input type="text" id="payment" name="payment" readonly /><br><br> -->
+
+            <button type="reset" id="clear" onclick="return resetForm()">Clear</button>
+
+            <button type="submit" id="calculate" onclick="calculateFields()">Calculate</button>
+
+            <p id="usermsg"></p>
+          </div>
+        </form>
+      </div>
+
+
+    </div>
+  </div>
+
+
+  <footer class="footer-content">
+    <p>&copy; 2020 | Darrin Fry | Utah |
+      <a href="https://www.byui.edu/online " target="_blank">BYUI Online Learning</a> </p>
+    <script>
+      const hambutton = document.querySelector(".ham");
+      hambutton.addEventListener("click", toggleMenu, false);
+
+      function toggleMenu() {
+        document.querySelector(".navigation").classList.toggle("responsive");
+      }
+    </script>
+    <script>
+      var aprValue = -1;
+      var termValue = 0;
+      var loanValue = 0;
+
+      function validateApr() {
+        let apr = document.getElementById('apr');
+        aprValue = parseFloat(apr.value) || -1;
+        document.getElementById('usermsg').innerHTML = "";
+        if (aprValue < 0 || aprValue > 25) {
+          document.getElementById('usermsg').innerHTML = "APR must in the range of 0-25%.";
+          apr.focus();
+          return false;
+        }
+        return true;
+      }
+
+      function validateTerm() {
+        let term = document.getElementById('term');
+        termValue = parseInt(term.value) || 0;
+        document.getElementById('usermsg').innerHTML = "";
+        if (termValue < 1 || termValue > 40) {
+          document.getElementById('usermsg').innerHTML = "Term must be greater than 0 and less than or equal to 40.";
+          term.focus();
+          return false;
+        }
+        return true;
+      }
+
+      function validateLoan() {
+        let loan = document.getElementById('amount');
+        loanValue = parseInt(loan.value) || 0;
+        document.getElementById('usermsg').innerHTML = "";
+        if (loanValue < 1) {
+          document.getElementById('usermsg').innerHTML = "Loan Amount required to be above 0.";
+          loan.focus();
+          return false;
+        };
+        return true;
+      }
+
+      function validateFields() {
+        apr = parseFloat(document.getElementById('apr').value) || -1;
+        term = parseInt(document.getElementById('term').value) || 0;
+        loan = parseInt(document.getElementById('amount').value) || 0;
+
+        if (apr > 0 && term > 0 && loan > 0) {
+          if (validateApr() && validateTerm() && validateLoan()) {
+            doCalculate();
+          }
+        }
+      }
+
+      function calculateFields() {
+        if (validateApr() && validateTerm() && validateLoan())
+          doCalculate();
+
+      }
+
+      function resetForm() {
+        return confirm("Reset field entries?");
+      }
+
+      function doCalculate() {
+        // I jacked the algo from:
+        // http://www.math.niu.edu/courses/math101/current/loan.js
+        let i = aprValue / 100;
+        let months = termValue * 12;
+        let monthly_payment = (loanValue * (i / 12) * Math.pow((1 + i / 12), months) / (Math.pow((1 + i / 12), months) -
+          1));
+        document.getElementById('payment').value = monthly_payment.toFixed(2);
+      }
+    </script>
+  </footer>
+
+</body>
+
+</html>
