@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Brookhart Assignment 8</title>
+
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Open+Sans|Rock+Salt&display=swap');
+
+h1, h2, h3, h4, h5, h6 {
+  color: #a9cef4;
+  font-family: "Rock Salt", Papyrus, sans-serif;
+  margin-bottom: -13px;
+}
+
+nav {
+   background-color: #0b4f6c;
+   font-size: 1.2em;
+   line-height: 3em;
+   font-weight: bold;
+   text-align: right;
+   padding-right: 10px;
+}
+
+nav a {
+  color: #f8fee2;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #a9cef4;
+  text-decoration: none;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px black;
+}
+
+nav li {
+  display: inline-block;
+}
+
+img {
+  max-width: 100%;
+}
+
+#logo {
+  position: absolute;
+  top: 0px;
+  background-color: #ffffff;
+  border: solid thick #4c6cb7;
+  margin-left: 20px;
+}
+
+
+body {
+  font-family: "Open Sans", Arial, sans-serif;
+}
+
+footer {
+   display: flex;
+   justify-content: space-between;
+   font-size: .8em;
+}
+
+footer a {
+   padding-left: .5rem;
+}
+
+
+ul {
+  line-height: 2em;
+}
+
+.flex-container {
+  display: flex;
+  width: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: Roboto, sans-serif;
+  font-size: calc(.5em + 1vw);
+}
+
+
+.trip_box {
+  border: solid;
+  border-radius: 1em;
+  border-color: brown;
+  justify-content: center;
+  text-align: center;
+  margin: .5em;
+}
+
+.responsive {
+  width: 75%;
+  height: auto;
+}
+
+
+input[type=text] {
+  width: 30em;
+  height: 3em;
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
+
+input[type=checkbox] {
+  transform:scale(1.8, 1.8);
+  margin: 1em;
+}
+
+#cc_radio {
+  margin-left: 1em;
+  padding: 0;
+}
+
+
+label {
+  display: block;
+  padding-left: 15px;
+  text-indent: -15px;
+}
+
+
+button {
+  height: 2em;
+}
+
+.form_fields {
+  margin: 1em;
+  padding-left: 5em;
+}
+
+.validation_error_text {
+  color: red;
+}
+
+input[type=text] {
+  box-sizing: border-box;
+  border: 1px solid;
+  border-radius: 4px;
+  border-color:darkblue;
+}
+
+.total {
+  color:darkblue;
+  font-size: 1.5em;
+}
+
+#submitted {
+  color:crimson;
+  font-size: 1.9em;
+}
+
+.hidden {
+      display: none;
+}
+
+</style>
+
+<script>
+
+function calculate_total() {
+
+  var trip_total = 0;
+
+  if (item_0.checked){
+    trip_total = trip_total + 750;
+  }
+  if (item_1.checked){
+    trip_total = trip_total + 850;
+  }
+  if (item_2.checked){
+    trip_total = trip_total + 950;
+  }
+  if (item_3.checked){
+    trip_total = trip_total + 650;
+  }
+  if (item_4.checked){
+    trip_total = trip_total + 1550;
+  }
+
+  if (trip_total > 0) {
+  document.getElementById("total").innerHTML = trip_total;
+  }
+  else {
+    document.getElementById("total").innerHTML = "0";
+  }
+}
+
+  function validate_phone() {
+      var phone_check = check_phone();
+      if(phone_check == "pass"){
+        document.getElementById("phone_error").innerHTML = "";
+      }
+      else if(phone_check == "blank"){
+        return;
+      }
+      else {
+        if (phone_check = "fail")  {
+        document.getElementById("phone_error").innerHTML = "Incorrect format.  Use XXX-XXX-XXXX";
+        }
+      }
+    }
+
+    function check_phone() {
+      var phone_rg = /^\d\d\d-\d\d\d-\d\d\d\d$/;
+      var inputtxt = document.getElementById("phone").value;
+      inputtxt = inputtxt.trim();
+      if(inputtxt.match(phone_rg)){
+        document.getElementById("phone").style.borderColor = "darkblue";
+        document.getElementById("ph_asterisk").innerHTML = "";
+        return "pass";
+      }
+      else if(inputtxt.length == 0){
+        return "blank";
+      }
+      else {
+        return "fail";
+      }
+    }
+
+    function validate_cc() {
+      var cc_check = check_cc();
+
+      if(cc_check == "pass"){
+        document.getElementById("cc_error").innerHTML = "";
+      }
+      else if(cc_check == "blank"){
+        return;
+      }
+      else {
+        document.getElementById("cc_error").innerHTML = "Incorrect format.  Use 1111 1111 1111 1111";
+      }
+    }
+
+    function check_cc() {
+      var cc_rg = /^\d\d\d\d \d\d\d\d \d\d\d\d \d\d\d\d$/;
+      var inputtxt = document.getElementById("credit_card").value;
+      inputtxt = inputtxt.trim();
+      if(inputtxt.match(cc_rg)){
+        document.getElementById("credit_card").style.borderColor = "darkblue";
+        document.getElementById("cc_asterisk").innerHTML = "";
+        return "pass";
+      }
+      else if(inputtxt.length == 0){
+        return "blank";
+      }
+      else {
+        return "fail";
+      }
+    }
+
+    function validate_exp() {
+      var exp_check = check_exp();
+  
+      if(exp_check == "date_error") {
+          document.getElementById("exp_error").innerHTML = "Month must be between 1-12.  Year must be greater than 2019";
+        }
+      else if (exp_check == "format_error"){
+        document.getElementById("exp_error").innerHTML = "Incorrect format.  Use 01/2020";
+        }
+      else if(exp_check == "blank"){
+        return;
+      }
+      else {
+        document.getElementById("exp_error").innerHTML = "";
+      }
+    }
+
+    function check_exp() {
+      var exp_rg = /^\d\d\/\d\d\d\d$/;
+      var inputtxt = document.getElementById("exp_date").value;
+      inputtxt = inputtxt.trim();
+      if (inputtxt.match(exp_rg)) {
+        var month = parseInt(inputtxt.slice(0,2));
+        var year = parseInt(inputtxt.slice(3, 7));
+        if(month < 1 || month > 12 || year < 2020) {
+          return "date_error";
+        }
+        else {
+          document.getElementById("exp_date").style.borderColor = "darkblue";
+          document.getElementById("ex_asterisk").innerHTML = "";
+          return "pass";
+        }
+      }
+      else if(inputtxt.length == 0){
+        return "blank";
+      }
+      else {
+        return "format_error";
+      }
+    }
+
+    function check_first() {
+      var vfirst_name = document.getElementById("first_name").value;
+      if (vfirst_name.length > 0) {
+        document.getElementById("fn_asterisk").innerHTML = "";
+        document.getElementById("first_name").style.borderColor = "darkblue";
+      }
+    }
+
+    function check_last() {
+      var vlast_name = document.getElementById("last_name").value;
+      if (vlast_name.length > 0) {
+        document.getElementById("ln_asterisk").innerHTML = "";
+        document.getElementById("last_name").style.borderColor = "darkblue";
+      }
+    }
+
+    function check_address() {
+      var vaddress = document.getElementById("address").value;
+      if (vaddress.length > 0) {
+        document.getElementById("ad_asterisk").innerHTML = "";
+        document.getElementById("address").style.borderColor = "darkblue";
+      }
+    }
+
+    function validate_form() {
+
+      var vfirst_name = document.getElementById("first_name").value;
+      var vlast_name = document.getElementById("last_name").value;
+      var vaddress = document.getElementById("address").value;
+      var vphone = document.getElementById("phone").value;
+      var vcc = document.getElementById("credit_card").value;
+      var vexp_date = document.getElementById("exp_date").value;
+      var test_valid = true;  
+      var exp_check = check_exp();
+      var cc_check = check_cc();
+      var phone_check = check_phone();
+      var focus_priority = "";
+
+      if (vexp_date == "" || vexp_date == null || exp_check != "pass") {
+        document.getElementById("exp_date").style.borderColor = "red";
+        focus_priority = 0;
+        document.getElementById("validation_error").innerHTML = "Please correct the field(s) marked * above.";
+        document.getElementById("ex_asterisk").innerHTML = "*";
+        document.getElementById("exp_error").innerHTML = "";
+        test_valid = false;
+      }
+
+      if (vcc == "" || vcc == null || cc_check != "pass") {
+        document.getElementById("credit_card").style.borderColor = "red";
+        focus_priority = 1;
+        document.getElementById("validation_error").innerHTML = "Please correct the field(s) marked * above.";
+        document.getElementById("cc_asterisk").innerHTML = "*";
+        document.getElementById("cc_error").innerHTML = "";
+        test_valid = false;
+      }
+
+      if (vphone == "" || vphone == null || phone_check != "pass") {
+        document.getElementById("phone").style.borderColor = "red";
+        focus_priority = 2;
+        document.getElementById("validation_error").innerHTML = "Please correct the field(s) marked * above.";
+        document.getElementById("ph_asterisk").innerHTML = "*";
+        document.getElementById("phone_error").innerHTML = "";
+        test_valid = false;
+      }
+
+      if (vaddress == "" || null) {
+        document.getElementById("address").style.borderColor = "red";
+        focus_priority = 3;
+        document.getElementById("ad_asterisk").innerHTML = "*";
+        document.getElementById("validation_error").innerHTML = "Please correct the field(s) marked * above.";
+        test_valid = false;
+      }
+
+      if (vlast_name == "" || null) {
+        document.getElementById("last_name").style.borderColor = "red";
+        focus_priority = 4;
+        document.getElementById("ln_asterisk").innerHTML = "*";
+        document.getElementById("validation_error").innerHTML = "Please correct the field(s) marked * above.";
+        test_valid = false;
+      }
+
+
+      if (vfirst_name == "" || null) {
+        document.getElementById("first_name").style.borderColor = "red";
+        focus_priority = 5;
+        document.getElementById("fn_asterisk").innerHTML = "*";
+        document.getElementById("validation_error").innerHTML = "Please correct the field(s) marked * above.";
+        test_valid = false;
+      }
+
+      if (test_valid == true) {      
+      return true; 
+      }
+      else {
+        return false;
+      }
+
+    }
+
+
+    function reset_form() {
+      document.getElementById("phone_error").innerHTML = "";
+      document.getElementById("cc_error").innerHTML = "";
+      document.getElementById("exp_error").innerHTML = "";
+      document.getElementById("validation_error").innerHTML = "";
+      document.getElementById("ex_asterisk").innerHTML = "";
+      document.getElementById("cc_asterisk").innerHTML = "";
+      document.getElementById("ph_asterisk").innerHTML = "";
+      document.getElementById("ad_asterisk").innerHTML = "";
+      document.getElementById("fn_asterisk").innerHTML = "";
+      document.getElementById("ln_asterisk").innerHTML = "";
+      document.getElementById("exp_date").style.borderColor = "darkblue";
+      document.getElementById("credit_card").style.borderColor = "darkblue";
+      document.getElementById("phone").style.borderColor = "darkblue";
+      document.getElementById("address").style.borderColor = "darkblue";
+      document.getElementById("first_name").style.borderColor = "darkblue";
+      document.getElementById("last_name").style.borderColor = "darkblue";
+      document.getElementById("total").innerHTML = "";
+      document.getElementById("first_name").focus();
+    }
+
+
+</script>
+
+
+
+</head>
+
+<body>
+
+  <header>
+    <div id="logo">
+      <a href="../index.html"><img src="freeLogo.jpeg" alt="Air Adventures Logo"></a>
+    </div>
+      <nav>
+          <ul>
+            <li><a href="assign04.html">Home</a> |</li>
+            <li><a href="assign11.html">Purchase Trips</a></li>
+          </ul>
+      </nav>
+  </header>
+
+  <main>
+    <div>
+      <img src="hotAirBanner1.jpg" alt="Hot Air Balloons Over Lake">
+    </div>
+
+
+    <form onsubmit="return validate_form()" action="assign11.php" method="POST" >
+      <div id="trip_options" class="flex-container">
+          <div class="trip_box"><p>New Mexico Festival Trip</p><img src="hotair2.jpg" alt="Two hot air balloons" class="responsive"><br>
+            <input type="hidden" name="item_0" value="0">
+            <input type="checkbox" id="item_0" name="item_0" value="1"  onchange="calculate_total()">
+            <label for="item_0">$750</label><br><br>
+          </div>
+          <div class="trip_box"><p>St. George Trip</p><img src="hotair3.jpg" alt="Balloon over desert" class="responsive"><br>
+            <input type="hidden" name="item_1" value="0">
+            <input type="checkbox" id="item_1" name="item_1" value="1" onchange="calculate_total()"> 
+            <label for="item_1">$850</label><br><br>
+          </div>
+          <div class="trip_box"><p>Cedar Ridge Trip</p><img src="hotair4.jpg" alt="Desert balloon festival" class="responsive"><br>
+            <input type="hidden" name="item_2" value="0">
+            <input type="checkbox" id="item_2" name="item_2" value="1" onchange="calculate_total()"> 
+            <label for="item_2">$950</label><br><br>
+          </div>
+          <div class="trip_box"><p>Rio Grande Trip</p><img src="hotair3.jpg" alt="Balloon over desert" class="responsive" ><br>
+            <input type="hidden" name="item_3" value="0">
+            <input type="checkbox" id="item_3" name="item_3" value="1" onchange="calculate_total()"> 
+            <label for="item_3">$650</label><br><br>
+          </div>
+          <div class="trip_box"><p>Suprise Me! Trip</p><img src="hotair2.jpg" alt="Two hot air balloons" class="responsive" ><br>
+            <input type="hidden" name="item_4" value="0">
+            <input type="checkbox" id="item_4" name="item_4" value="1" onchange="calculate_total()"> 
+            <label for="item_4">$1550</label><br><br>
+          </div>
+
+      </div>
+
+      <div class="form_fields">
+        <p class="total">Total = $<span id="total"></span></p>
+        <span id="fn_asterisk" class="validation_error_text"></span><input type="text" id="first_name" name="first_name" placeholder="First Name"><br>
+        <span id="ln_asterisk" class="validation_error_text"></span> <input type="text" id="last_name" name="last_name" placeholder="Last Name"><br>
+        <span id="ad_asterisk" class="validation_error_text"></span> <input type="text" id="address" name="address" placeholder="Address (street address, city, state, zip)"><br>
+        <span id="ph_asterisk" class="validation_error_text"></span> <input type="text" id="phone" name="phone" placeholder="Phone"><br>
+        <p id="phone_error" class="validation_error_text"></p>
+        
+        <p>Credit Card Type:</p>
+        <div id="cc_radio">
+          <label for="visa">
+            <input type="radio" id="visa" name="card" value="Visa" checked>
+            Visa
+          </label>
+          <label for="mastercard">
+            <input type="radio" id="mastercard" name="card" value="Mastercard">
+              Mastercard
+          </label>     
+          <label for="american_express">
+            <input type="radio" id="american_express" name="card" value="American Express">
+            American Express
+          </label>
+        </div>
+
+        <p><span id="cc_asterisk" class="validation_error_text"></span>Credit Card: </p><input type="text" id="credit_card" name="credit_card" placeholder="Format: 1111 1111 1111 1111"><br>
+        <p id="cc_error" class="validation_error_text"></p>
+        <p><span id="ex_asterisk" class="validation_error_text"></span>Expiration Date: </p><input type="text" id="exp_date" name="exp_date" placeholder="Format: 01/2020"><br>
+        <p id="exp_error" class="validation_error_text"></p>
+        <p id="validation_error" class="validation_error_text"></p>
+
+        <br>
+        <button type="submit" id="validate" name="validate">Submit</button>
+        <button type="reset" name="reset" id="reset" value="reset" onclick="reset_form()">Reset</button>
+
+      </div>
+  </form>
+
+  </main>
+  
+</body>
+
+</html>

@@ -9,9 +9,66 @@
   <link rel="stylesheet" href="./css/main.css">
   <title>Darrin Fry Week 10 Directory Listing</title>
   <meta name="description" content="CS213 Directory Listing">
+  
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      text-align: left;
+      padding: 8px;
+    }
+    tr:nth-child(even) {
+      background-color: lightblue;
+    }
+    tr:nth-child(odd) {
+      background-color: silver;
+    }
+
+    #ouput a {
+      background-color: white;
+      
+    }
+  </style>
+
+  <script>
+    function ajaxRequest() {
+      let xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          let displayObject = JSON.parse(this.responseText);
+          let table = document.createElement("table");
+          let tr = table.insertRow(-1);
+          let col = ['Filename', 'Type', 'CWD', 'Action'];
+          for (let i = 0; i < col.length; i++) {
+              let th = document.createElement("th");
+              th.innerHTML = col[i];
+              tr.appendChild(th);
+          }
+          for (var i = 0; i < displayObject.length; i++) {
+            tr = table.insertRow(-1);
+            let Filename = tr.insertCell(-1);
+            Filename.innerHTML = displayObject[i].fileName;
+            let Type = tr.insertCell(-1);
+            Type.innerHTML = displayObject[i].fileType;
+            let CWD = tr.insertCell(-1);
+            CWD.innerHTML = displayObject[i].cwd;
+            let Action = tr.insertCell(-1);
+            let temp = displayObject[i].fileName;
+            Action.innerHTML = '<a href="' + temp + '" target="_blank">' + 'CLICK HERE:</a>';
+          }
+          let ouput = document.getElementById("ouput");
+          ouput.appendChild(table);
+        }; 
+      }
+      xhttp.open("GET", "assign10.php", true);
+      xhttp.send();
+    };
+</script>
 </head>
 
-<body class="body-group">
+<body class="body-group" onload="ajaxRequest()">
   <header class="header-group">
     <div>
       <div class="heading">
@@ -27,12 +84,10 @@
     </div>
   </header>
 
-  <div class="hero-image">
-  </div id="directory">
+  <div class="hero-image"></div>
 
-  <div>
-
-  </div>
+  <h2 style="width: 50%; padding:30px; margin: auto;  text-align: left;">Week 10 Folder Directory</h2>
+  <div id="ouput" style="width: 50%; padding:30px; margin: auto;  text-align: left;"></div>
 
   <footer class="footer-content">
     <p>&copy; 2020 | Darrin Fry | Utah |
@@ -45,44 +100,6 @@
         document.querySelector(".navigation").classList.toggle("responsive");
       }
     </script>
-
-    <script>
-      let data = document.getElementById("directory");
-      data.onload = getJSON();
-      function getJSON() {
-        let fileName = "./assign10.php";
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-          debugger;
-          if (this.readyState == 4 && this.status == 200) {
-            printOnScreen(this);
-          } else {
-            directory.innerHTML = "ERROR: 404 File Not Found";
-          }
-        }
-        xhttp.open("GET", fileName, true);
-        xhttp.send();
-      }
-
-      function printOnScreen(myJSON) {
-        let files = JSON.parse(myJSON.responseText);
-        let table = "<table><tr><th>File Name</th><th>File Type</th><th>CWD</th><th>Link</th></tr>";
-        for (var i = 0; i < files.length; i++) {
-          let link = "";
-          if (files[i].fileType != "dir") {
-            link = "<a href = \"./" + files[i].fileName + "\" target=\"_blank\">Click Here</a>";
-          } else {
-            link = "";
-          }
-          table += "<tr><td>" + files[i].fileName + "</td><td>" + files[i].fileType + "</td><td>" +
-            files[i].cwd + "</td><td>" + link + "</td></tr>"
-        }
-        table += "</table>";
-        directory.innerHTML = table;
-      }
-    </script>
   </footer>
-
 </body>
-
 </html>

@@ -27,28 +27,18 @@
      * The current working directory has been stored in $cwd.
      * To get the size of an array in php use the sizeof function:  $len = sizeof($files);
      *****************************************************************/
-     //NOTE TO SELF: Next time use class Methods to accomplish FOR loop
 
-     //set individual items in a new fileN object to the fileN properties
-     for ($i=0; $i < sizeof($files); $i++) { 
-        $directory[$i] = new fileN;//set type of object
+    for ($i = 0; $i < sizeof($files); $i++)
+    {
+        $directory[$i] = new fileN();
+        $directory[$i] -> fileName = $files[$i];
+        $directory[$i] -> fileType = filetype($directory[$i] -> fileName);
+        $directory[$i] -> cwd = $cwd;
+    }
 
-        $directory[$i]->fileName = $files[$i]; //name
-
-        $directory[$i]->fileType = fileType("./$files[$i]");//address
-
-        if ($files[$i] != "." && $files[$i] != "..") { //if statement for cwd
-            $directory[$i]->cwd = $cwd;
-        }
-        else{
-            $directory[$i]->cwd = "";
-        }
-     }
-     
      /*******************End of your Code *******************************************/
 
      // convert the PHP array of objects to a JSON string
      $str = json_encode($directory);
-     print "\n $str \n";   //output the json string - The string is sent to the browser.
+     print "\n $str \n";   //output the json string - The string is sent to the browser.      
  ?>
-

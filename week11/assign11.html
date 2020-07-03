@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Lobster&family=Roboto&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./css/main.css">
+  <title>Darrin Fry Week 11 PHP Form Processing</title>
+  <meta name="description" content="A calculator for CS213 Week 7">
+
+</head>
+
+<body class="body-group" onload="checkTotal()">
+  <header class="header-group">
+    <div>
+      <div class="heading">
+        <h1>Week 11 PHP Form Processing</h1>
+        <h3>(and some pretty jewelry too)</h3>
+      </div>
+      <nav>
+        <ul class="navigation">
+          <li><a class="ham" href="#">&#9776; Menu</a></li>
+          <li><a class="index" href="../index.html">CS213 Assignments</a></li>
+
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero-image">
+  </div>
+
+  <div class="main-content">
+    <h2>Your wife called. She said to choose three!</h2>
+    <div class="content-grid">
+      <div id="output">
+        <form name="listForm" action="./assign11.php" method="POST" class="gallery-group">
+          <div>
+            <div>
+              <img src="./images/03092018a.jpg" alt="diamond and sapphire ring">
+              <p>Two Tone ring featuring white diamonds and bluesapphires</p>
+              <input type="hidden" name="item_0" id="" value="0">
+              <input type="checkbox" name="item_0" id="item_0" value="1234.56" onchange="checkTotal()" />$1234.56<br />
+            </div>
+            <div>
+              <img src="./images/03262018b.jpg" alt="diamond and emerald ring">
+              <p>Platinum and diamond art-deco inspired ring accented with emeralds.</p>
+              <input type="hidden" name="item_1" id="" value="0">
+              <input type="checkbox" name="item_1" id="item_1" value="2345.67" onchange="checkTotal()" />$2345.67<br />
+            </div>
+            <div>
+              <img src="./images/06072018a.jpg" alt="pearl and diamond ring">
+              <p>A black tahitian pearl accented with diamonds in a modern mounting</p>
+              <input type="hidden" name="item_2" id="" value="0">
+              <input type="checkbox" name="item_2" id="item_2" value="3456.78" onchange="checkTotal()" />$3456.78<br />
+            </div>
+            <div>
+              <img src="./images/04252018b.jpg" alt="aquamarine and diamond ring">
+              <p>A substantial aquamarine framed with colorless diamonds.</p>
+              <input type="hidden" name="item_3" id="" value="0">
+              <input type="checkbox" name="item_3" id="item_3" value="4567.89" onchange="checkTotal()" />$4567.89<br />
+            </div>
+            <div>
+              <img src="./images/06152018a.jpg" alt="diamond and pink sapphire ring">
+              <p>A double halo ring featuring diamonds and bright pink sapphires.</p>
+              <input type="hidden" name="item_4" id="" value="0">
+              <input type="checkbox" name="item_4" id="item_4" value="5678.90" onchange="checkTotal()" />$5678.90<br />
+            </div>
+            <div>
+              <img src="./images/10172017A.jpg" alt="diamond and sapphire ring">
+              <p>A bright round diamond framed by more bright diamonds and accented with deep blue sapphires.</p>
+              <input type="hidden" name="item_5" id="" value="0">
+              <input type="checkbox" name="item_5" id="item_5" value="6789.01" onchange="checkTotal()" />$6789.01<br />
+            </div>
+            <div>
+              <img src="./images/12112017a.jpg" alt="diamond two tone ring">
+              <p>A modern rose and white gold ring with colorless diamonds.</p>
+              <input type="hidden" name="item_6" id="" value="0">
+              <input type="checkbox" name="item_6" id="item_6" value="7890.12" onchange="checkTotal()" />$7890.12<br />
+            </div>
+            <div>
+              <img src="./images/MatrixGold-Render-Test-2.jpg" alt="diamond and pink tourmaline ring">
+              <p> Pink tourmaline frame the substantial oval diamond.</p>
+              <input type="hidden" name="item_7" id="" value="0">
+              <input type="checkbox" name="item_7" id="item_7" value="8901.23" onchange="checkTotal()" />$8901.23<br />
+            </div>
+            <div>
+              <img src="./images/Molinellis-Craig-Oval-Cluster-5.jpg" alt="diamond cluster ring">
+              <p>A diamond cluster ring set in rose and white gold.</p>
+              <input type="hidden" name="item_8" id="" value="0">
+              <input type="checkbox" name="item_8" id="item_8" value="9012.34" onchange="checkTotal()" />$9012.34<br />
+            </div>
+
+            <input type="text" name="total" value="0" size="10" id="hideInput" />
+          </div>
+
+
+          <div>
+
+          </div>
+          <div>
+
+          </div>
+      </div>
+      <div>
+        <h2>Select your items and the 'cart' total will tally below</h2>
+        <hr>
+        <h4>Total: <span id="mirror"></span></h4>
+        <hr>
+        <p> This is where we would be talking about return policies and shipping policies and talk about lots of other
+          things. I am the very model of a modern major general. Also, Lord of the Rings is only a so-so book. I enjoyed
+          the Hobit more. But, C.S. Lewis wrote better epic tales that are easier to relate.</p>
+
+      </div>
+      <div class="formDiv">
+        <div id="contactForm">
+          <label>First Name:</label>
+          <br>
+          <input type="text" id="first_name" name="first_name" size="10" placeholder="First Name">
+          <br>
+          <label>Last Name:</label>
+          <br>
+          <input type="text" id="last_name" name="last_name" size="10" placeholder="Last Name">
+          <br>
+          <label>Address:</label>
+          <br>
+          <input type="text" id="street_address" name="street_address" size="10" placeholder="Street Address">
+          <input type="text" id="city" name="city" size="10" placeholder="City">
+          <input type="text" id="state" name="state" size="10" placeholder="State">
+          <input type="text" id="zipcode" name="zipcode" size="10" placeholder="Zipcode">
+
+          <br>
+          <label>Phone:</label>
+          <br>
+          <input type="text" id="phone" name="phone" onkeyup="validatePhone()" size="10" placeholder="208-496-1700">
+          <br>
+          <label>Email:</label>
+          <br>
+          <input type="text" name="txtEmail" id="txtEmail" onkeyup="validateEmail()">
+          <br>
+
+        </div>
+      </div>
+      <div class="formDiv">
+        <div id="contactForm2">
+          <label>Credit Card Type:</label>
+          <br>
+          <input type="radio" id="visa" name="card" value="visa">
+          <label for="visa">Visa</label>
+          <input type="radio" id="mastercard" name="card" value="mastercard">
+          <label for="mastercard">MasterCard</label>
+          <input type="radio" id="american_express" name="card" value="american_express">
+          <label for="american_express">American Express</label>
+          <br>
+          <br>
+          <label>Credit Card Number:</label>
+          <br>
+          <input type="text" id="credit_card" name="credit_card" onkeyup="validateCardNumber()" size="16"
+            placeholder="Credit Card">
+          <br>
+          <label>Credit Card Expiration:</label>
+          <br>
+          <input type="text" id="exp_date" name="exp_date" onkeyup="validateExp()" size="10" placeholder="01/2020">
+          <br>
+
+          <button type="submit" id="validate" onclick="calculateFunc()">Submit</button> <button type="reset" id="reset"
+            onclick="formReset()" value="Reset form"> RESET </button>
+          </form>
+        </div>
+
+
+
+      </div>
+    </div>
+
+
+    <footer class="footer-content">
+      <p>&copy; 2020 | Darrin Fry | Utah |
+        <a href="https://www.byui.edu/online " target="_blank">BYUI Online Learning</a> </p>
+      <script>
+        const hambutton = document.querySelector(".ham");
+        hambutton.addEventListener("click", toggleMenu, false);
+
+        function toggleMenu() {
+          document.querySelector(".navigation").classList.toggle("responsive");
+        }
+      </script>
+      <script>
+        function validateEmail() {
+          var emailTextBox = document.getElementById("txtEmail");
+          var email = emailTextBox.value;
+          var emailRegEx =
+            /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+          emailTextBox.style.color = "white";
+
+          if (emailRegEx.test(email)) {
+            emailTextBox.style.backgroundColor = "green";
+            return true;
+          } else {
+            emailTextBox.style.backgroundColor = "red";
+            return false;
+          }
+        } // This script was learned by using the tutorial found in this youtube video https://www.youtube.com/watch?v=0Niin-szO60
+
+        //using what was learned from the script above I was able to do more valdiation as found in the next functions
+        function validatePhone() {
+          var phoneNumber = document.getElementById("phone");
+          var phone = phoneNumber.value;
+          var phoneRegEx = /^[0-9]{3}-[0-9]{3}-[0-9]{4}/;
+
+          phoneNumber.style.color = "white";
+
+          if (phoneRegEx.test(phone)) {
+            phoneNumber.style.backgroundColor = "green";
+            return true;
+          } else {
+            phoneNumber.style.backgroundColor = "red";
+            return false;
+          }
+        }
+
+        function validateCardNumber() {
+          var cardNumber = document.getElementById("credit_card");
+          var card = cardNumber.value;
+          var cardRegEx = /^[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}/;
+
+          cardNumber.style.color = "white";
+
+          if (cardRegEx.test(card)) {
+            cardNumber.style.backgroundColor = "green";
+            return true;
+          } else {
+            cardNumber.style.backgroundColor = "red";
+            return false;
+          }
+        }
+
+        function validateExp() {
+          var cardExp = document.getElementById("exp_date");
+          var exp = cardExp.value;
+          var expRegEx = /^(0[1-9]|1[0-2])\/(20[2-8][0-9]|209[0-9])/;
+
+          cardExp.style.color = "white";
+
+          if (expRegEx.test(exp)) {
+            cardExp.style.backgroundColor = "green";
+            return true;
+          } else {
+            cardExp.style.backgroundColor = "red";
+            return false;
+          }
+        }
+
+        function checkTotal() {
+          var sum = 0;
+          var gn, elem;
+          for (i = 0; i < 9; i++) {
+            gn = 'item_' + i;
+            elem = document.getElementById(gn);
+            if (elem.checked == true) {
+              sum += Number(elem.value);
+            }
+          }
+          document.getElementById('mirror').innerHTML = sum.toFixed(2);
+
+
+        }
+
+        //reset the form
+        function formReset() {
+          document.getElementById("contactForm").reset();
+          document.getElementById("phone").style.backgroundColor = "white";
+          document.getElementById("txtEmail").style.backgroundColor = "white";
+          document.getElementById("first_name").focus();
+          document.getElementById("credit_card").value = ""
+          document.getElementById("exp_date").value = ""
+          document.getElementById("credit_card").style.backgroundColor = "white";
+          document.getElementById("exp_date").style.backgroundColor = "white";
+        }
+      </script>
+    </footer>
+
+</body>
+
+</html>

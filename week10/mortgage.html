@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html lang="en-us">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Lobster&family=Roboto&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Lobster&family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/main.css">
-  <title>Darrin Fry Week 10 Mortgage with PHP</title>
-  <meta name="description" content="A calculator for CS213 Week 10">
+  <title>Darrin Fry Week 10 Mortgage Calculator with PHP</title>
+  <meta name="description" content="A calculator for CS213 Week 7">
 
-
+ 
 
 </head>
 
 <body class="body-group">
-  <header class="header-group">
-    <div>
+  <header  class="header-group">
+    <div >
       <div class="heading">
-        <h1>Week 10 Mortgage with PHP</h1>
-      </div>
-      <nav>
+        <h1 >Week 10 Mortage Calculator with PHP</h1>
+    </div>
+      <nav >
         <ul class="navigation">
           <li><a class="ham" href="#">&#9776; Menu</a></li>
           <li><a class="index" href="../index.html">CS213 Assignments</a></li>
@@ -38,44 +36,30 @@
       <div id="output">
         <div id="outputHeading">
           <h2>What will your monthly payment be?</h2>
-          <p>Please fill out the form and click "compute payment." Once the form is filled out it will auto update if
-            you make changes. Please input valid information.</p>
+          <p>Please fill out the form and click "compute payment." Your information will show in a new window.  Please input valid information.</p>
         </div>
         <div id="payment"></div>
       </div>
       <div id="formDiv">
-        <form onkeyup="validateFields()" action="./mortgage.php" method="GET">
-          <div>
-            <label for="apr">Annual Percentage Rate:</label>
-            <input type="text" id="apr" name="apr" placeholder="4.25" oninput="validateApr()" required /><br><br>
-
-            <label for="term">Term (In Years):</label>
-            <input type="text" id="term" name="term" placeholder="30" oninput="validateTerm()" required /><br><br>
-
-            <label for="amount">Loan Amount:</label>
-            <input type="text" id="amount" name="amount" placeholder="325000" oninput="validateLoan()"
-              required /><br><br>
-
-            <!-- <label for="payment">Monthly Payment:</label>
-              <input type="text" id="payment" name="payment" readonly /><br><br> -->
-
-            <button type="reset" id="clear" onclick="return resetForm()">Clear</button>
-
-            <button type="submit" id="calculate" onclick="calculateFields()">Calculate</button>
-
-            <p id="usermsg"></p>
-          </div>
+        <form id="calcForm" action="./mortgage.php" method="GET" target="_blank">
+          <p>APR - Annual Percentage Rate (between 0 and 25.00) 
+          <input type="text" id="apr" name="apr" oninput="valueCheck1()" size="10" placeholder="APR"><span id="errorMessage1"></span></p>
+          <p>Loan Term in years (between 0 and 40) 
+          <input type="text" id="term" name="term" oninput="valueCheck2()" size="10" placeholder="TERM"><span id="errorMessage2"></span></p>
+          <p>Loan Amount - (in dollars) 
+          <input type="text" id="amount" name="amount" oninput="valueCheck3()"  size="10" placeholder="LOAN AMOUNT"><span id="errorMessage3"></span></p>
+          <button type="submit"  id="calculate" onclick = "calculateFunc()">Compute payment</button>  <button type="reset" id="clear" onclick="formReset()" value="Reset form"> RESET </button> 
         </form>
       </div>
-
-
+      
+     
     </div>
   </div>
-
+  
 
   <footer class="footer-content">
     <p>&copy; 2020 | Darrin Fry | Utah |
-      <a href="https://www.byui.edu/online " target="_blank">BYUI Online Learning</a> </p>
+    <a href="https://www.byui.edu/online " target="_blank" >BYUI Online Learning</a> </p>
     <script>
       const hambutton = document.querySelector(".ham");
       hambutton.addEventListener("click", toggleMenu, false);
@@ -84,81 +68,93 @@
         document.querySelector(".navigation").classList.toggle("responsive");
       }
     </script>
-    <script>
-      var aprValue = -1;
-      var termValue = 0;
-      var loanValue = 0;
-
-      function validateApr() {
-        let apr = document.getElementById('apr');
-        aprValue = parseFloat(apr.value) || -1;
-        document.getElementById('usermsg').innerHTML = "";
-        if (aprValue < 0 || aprValue > 25) {
-          document.getElementById('usermsg').innerHTML = "APR must in the range of 0-25%.";
-          apr.focus();
-          return false;
-        }
+     <script>
+      
+     //reset the form
+     function formReset() {
+      document.getElementById("calcForm").reset();
+      document.getElementById("errorMessage1").innerHTML = "";
+      document.getElementById("errorMessage2").innerHTML = "";
+      document.getElementById("errorMessage3").innerHTML = "";
+      document.getElementById("errorMessage4").innerHTML = "";
+      document.getElementById("payment").innerHTML = "";
+      document.getElementById("apr").style.backgroundColor = "white";
+      document.getElementById("term").style.backgroundColor = "white";
+      document.getElementById("amount").style.backgroundColor = "white";
+      document.getElementById("paymentsPerYearInput").style.backgroundColor = "white";
+      document.getElementById("apr").focus()
+     }
+     //checks for appropriate inputs and notifies the user if not
+    function valueCheck1() {
+      var x;
+      var style = document.getElementById("apr");
+      x = parseFloat(document.getElementById("apr").value);
+      if (isNaN(x) || x < 0 || x > 25) {
+        document.getElementById("errorMessage1").innerHTML = "Please input a value between 0 and 25.00";
+        style.style.backgroundColor = "red";
+        return false;
+      } else {
+        document.getElementById("errorMessage1").innerHTML = "";
+        style.style.backgroundColor = "white";
         return true;
       }
-
-      function validateTerm() {
-        let term = document.getElementById('term');
-        termValue = parseInt(term.value) || 0;
-        document.getElementById('usermsg').innerHTML = "";
-        if (termValue < 1 || termValue > 40) {
-          document.getElementById('usermsg').innerHTML = "Term must be greater than 0 and less than or equal to 40.";
-          term.focus();
-          return false;
-        }
+    }
+    //checks for appropriate inputs and notifies the user if not
+    function valueCheck2() {
+      var x;
+      var style = document.getElementById("term");
+      x = parseFloat(document.getElementById("term").value);
+      if (isNaN(x) || x <= 0 || x > 40) {
+        document.getElementById("errorMessage2").innerHTML = "Please input a value between 0 and 40";
+        style.style.backgroundColor = "red";
+        return false;
+      } else {
+        document.getElementById("errorMessage2").innerHTML = "";
+        style.style.backgroundColor = "white";
         return true;
       }
-
-      function validateLoan() {
-        let loan = document.getElementById('amount');
-        loanValue = parseInt(loan.value) || 0;
-        document.getElementById('usermsg').innerHTML = "";
-        if (loanValue < 1) {
-          document.getElementById('usermsg').innerHTML = "Loan Amount required to be above 0.";
-          loan.focus();
-          return false;
-        };
+    }
+    //checks for appropriate inputs and notifies the user if not
+    function valueCheck3() {
+      var x;
+      var style = document.getElementById("amount");
+      x = parseFloat(document.getElementById("amount").value);
+      if (isNaN(x) || x <= 0 ) {
+        document.getElementById("errorMessage3").innerHTML = "Please input a loan amount greater than 0";
+        style.style.backgroundColor = "red";
+        return false;
+      } else {
+        document.getElementById("errorMessage3").innerHTML = "";
+        style.style.backgroundColor = "white";
+        return  true;
+      }
+    }
+    //checks for appropriate inputs and notifies the user if not
+    function valueCheck4() {
+      var x;
+      var style = document.getElementById("paymentsPerYearInput");
+      x = parseFloat(document.getElementById("paymentsPerYearInput").value);
+      if (isNaN(x) || x <= 0 ) {
+        document.getElementById("errorMessage4").innerHTML = "Input not valid";
+        style.style.backgroundColor = "red";
+        return false;
+      } else {
+        document.getElementById("errorMessage4").innerHTML = "";
+        style.style.backgroundColor = "white";
         return true;
       }
-
-      function validateFields() {
-        apr = parseFloat(document.getElementById('apr').value) || -1;
-        term = parseInt(document.getElementById('term').value) || 0;
-        loan = parseInt(document.getElementById('amount').value) || 0;
-
-        if (apr > 0 && term > 0 && loan > 0) {
-          if (validateApr() && validateTerm() && validateLoan()) {
-            doCalculate();
-          }
-        }
+    }
+    function valueCheck5() {
+      var x;
+      x = document.getElementById("payment").innerText;
+      if (x == "") {
+        return false;
+      } else {
+        return true;
       }
-
-      function calculateFields() {
-        if (validateApr() && validateTerm() && validateLoan())
-          doCalculate();
-
-      }
-
-      function resetForm() {
-        return confirm("Reset field entries?");
-      }
-
-      function doCalculate() {
-        // I jacked the algo from:
-        // http://www.math.niu.edu/courses/math101/current/loan.js
-        let i = aprValue / 100;
-        let months = termValue * 12;
-        let monthly_payment = (loanValue * (i / 12) * Math.pow((1 + i / 12), months) / (Math.pow((1 + i / 12), months) -
-          1));
-        document.getElementById('payment').value = monthly_payment.toFixed(2);
-      }
-    </script>
+    }
+  </script>
   </footer>
-
+  
 </body>
-
 </html>
