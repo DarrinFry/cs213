@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="festival competiion registration">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - Festival Competition</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+<section id="left">
+    <header>
+        <h1>Registration - Festival Competition</h1>
+        <img src="border2.png" alt="border">
+    </header>
+
+    <form name="registrationForm" id="registrationForm">
+        <p>Please choose your performance type:</p>
+
+        <input type="radio" id="solo" name="performance" value="Solo" checked>
+        <label for="solo">Solo</label>
+        <input type="radio" id="duet" name="performance" value="Duet">
+        <label for="duet">Duet</label>
+        <input type="radio" id="concerto" name="performance" value="Concerto">
+        <label for="concerto">Concerto</label><br><br>
+
+        <div id="student_1">
+            <label for="first_name">First Name (required):</label><br>
+            <input type="text" id="first_name" name="first_name"><br><br>
+            <label for="last_name">Last Name (required):</label><br>
+            <input type="text" id="last_name" name="last_name"><br><br>
+            <label for="student_id">Student ID (required):</label><br>
+            <input type="text" id="student_id" name="student_id"><br><br><br><br>
+        </div>
+
+        <div id="student_2" hidden>
+            <label for="first_name_2">First Name - Student 2:</label><br>
+            <input type="text" id="first_name_2" name="first_name_2"><br><br>
+            <label for="last_name_2">Last Name - Student 2:</label><br>
+            <input type="text" id="last_name_2" name="last_name_2"><br><br>
+            <label for="student_id_2">Student ID - Student 2:</label><br>
+            <input type="text" id="student_id_2" name="student_id_2"><br><br><br><br>
+        </div>
+
+        <p>Please choose your skill level:</p>
+        <input type="radio" id="beginner" name="skill" value="Beginner" checked>
+        <label for="beginner">Beginner</label>
+        <input type="radio" id="intermediate" name="skill" value="Intermediate">
+        <label for="intermediate">Intermediate</label>
+        <input type="radio" id="pre-advanced" name="skill" value="Pre-advanced">
+        <label for="pre-advanced">Pre-advanced</label>
+        <input type="radio" id="advanced" name="skill" value="Advanced">
+        <label for="advanced">Advanced</label><br><br>
+
+        <p>Please choose your instrument:</p>
+        <input type="radio" id="piano" name="instrument" value="Piano" checked>
+        <label for="piano">piano</label>
+        <input type="radio" id="voice" name="instrument" value="Voice">
+        <label for="voice">voice</label>
+        <input type="radio" id="string" name="instrument" value="String">
+        <label for="string">string</label>
+        <input type="radio" id="organ" name="instrument" value="Organ">
+        <label for="organ">organ</label>
+        <input type="radio" id="other" name="instrument" value="Other">
+        <label for="other">other</label><br><br>
+
+        <p>Please choose your preferred location/campus building:</p>
+        <input type="radio" id="snow" name="location" value="Snow" checked>
+        <label for="snow">Snow</label>
+        <input type="radio" id="austin" name="location" value="Austin">
+        <label for="austin">Austin</label>
+        <input type="radio" id="hinckley" name="location" value="Hinckley">
+        <label for="hinckley">Hinckley</label><br><br>
+
+        <p>Please choose your preferred room number:</p>
+        <input type="radio" id="rm100" name="room" value="100" checked>
+        <label for="rm100">Room 100</label>
+        <input type="radio" id="rm200" name="room" value="200">
+        <label for="rm200">Room 200</label>
+        <input type="radio" id="rm300" name="room" value="300">
+        <label for="rm300">Room 300</label><br><br><br>
+
+
+        <label for="time_slot">Preferred time slot (required):</label>
+        <select name="time_slot" id="time_slot">
+            <option value="9am">9:00am</option>
+            <option value="9:30am">9:30am</option>
+            <option value="10am">10:00am</option>
+            <option value="10:30am">10:30am</option>
+            <option value="11am">11:00am</option>
+            <option value="11:30am">11:30am</option>
+            <option value="1pm">1:00pm</option>
+            <option value="1:30pm">1:30pm</option>
+            <option value="2pm">2:00pm</option>
+            <option value="2:30pm">2:30pm</option>
+        </select><br><br><br>
+
+
+        <button type="submit" id="register" name="register" value="register">Register</button>
+        <br>
+        <div id="registration_data"></div>
+        <br><br><br>
+        <button type="reset" name="clear" value="clear">Clear Form</button><br><br><br>
+    </form>
+
+
+    <footer>
+        <p>Designed by Christine Noonan</p>
+    </footer>
+</section>
+
+<section id="right">
+    <h1>Current Registrations:</h1>
+    <div id="prev-regs"></div>
+</section>
+
+
+<script>
+
+  //if person chooses "duet," student-2 info will appear
+  document.getElementById('duet').addEventListener('click', function () {
+    document.getElementById('student_2').hidden = false
+  }, false)
+  document.getElementById('solo').addEventListener('click', function () {
+    document.getElementById('student_2').hidden = true
+  }, false)
+  document.getElementById('concerto').addEventListener('click', function () {
+    document.getElementById('student_2').hidden = true
+  }, false)
+
+  //set focus to missing fields upon submit
+  document.getElementById('register').onclick = function (e) {
+    e.preventDefault()
+
+    if (document.registrationForm.first_name.value == '') {
+      document.getElementById('first_name').focus()
+      return false
+    }
+    if (document.registrationForm.last_name.value == '') {
+      document.getElementById('last_name').focus()
+      return false
+    }
+    if (document.registrationForm.student_id.value == '') {
+      document.getElementById('student_id').focus()
+      return false
+    }
+
+    let request = new XMLHttpRequest(),
+        data = new FormData(document.getElementById('registrationForm'))
+    request.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        let resp = JSON.parse(this.responseText)
+        if (resp.length) {
+          let errorString = 'Error!\n';
+          for (let error in resp)
+            if (resp.hasOwnProperty(error))
+              errorString += resp[error]
+
+          alert(errorString)
+        } else {
+          reloadPreviousRegistration()
+        }
+      }
+    }
+    request.open('POST', 'assign13.php', true)
+    request.send(data)
+  }
+
+  function reloadPreviousRegistration () {
+    document.getElementById('prev-regs').innerHTML = ''
+    let fileReq = new XMLHttpRequest()
+    fileReq.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        let regData = JSON.parse(this.responseText),
+            html    = ''
+        for (let i in regData) {
+          if (regData.hasOwnProperty(i)) {
+            html += '<strong>Performance:</strong> ' + regData[i].performance + '<br>';
+            html += '<strong>First Name:</strong> ' + regData[i].first_name + '<br>';
+            html += '<strong>Last Name:</strong> ' + regData[i].last_name + '<br>';
+            html += '<strong>Student ID:</strong> ' + regData[i].student_id + '<br>';
+            html += '<strong>First Name 2:</strong> ' + regData[i].first_name_2 + '<br>';
+            html += '<strong>Last Name 2:</strong> ' + regData[i].last_name_2 + '<br>';
+            html += '<strong>Student ID 2:</strong> ' + regData[i].student_id_2 + '<br>';
+            html += '<strong>Skill:</strong> ' + regData[i].skill + '<br>';
+            html += '<strong>Instrument:</strong> ' + regData[i].instrument + '<br>';
+            html += '<strong>Location:</strong> ' + regData[i].location + '<br>';
+            html += '<strong>Room:</strong> ' + regData[i].room + '<br>';
+            html += '<strong>Time Slot:</strong> ' + regData[i].time_slot + '<br><br><br>';
+          }
+        }
+        document.getElementById('prev-regs').innerHTML = html;
+      }
+    }
+    fileReq.open('GET', 'data/regData.txt', true)
+    fileReq.send()
+  }
+
+  reloadPreviousRegistration()
+</script>
+
+</body>
+</html>

@@ -43,13 +43,3 @@
     echo $current;
 ?>
 
-<?php
-
-  $file = "data/data.txt";
-  $current = [];
-  if (file_exists($file)) {
-    $current = file_get_contents($file);
-  }
-
-  echo $current;    
-?>

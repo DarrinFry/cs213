@@ -1,39 +1,198 @@
-<script>
-        function validate() {
-          if (document.getElementById("startState").value == '') {
-            return false;
-          }
-          if (document.getElementById("startCity").value == '') {
-            return false;
-          }
-          if (document.getElementById("endState").value == '') {
-            return false;
-          }
-          if (document.getElementById("endCity").value == '') {
+//This will disable the submit button till the user filable sections are complete.
+      function validate() {
+        var x = document.querySelectorAll('input[type=text]');
+        var y = 0;
+        for (i = 0; i < x.length; i++) {
+          if (x[i].value == '') {
             return false;
           }
           return true;
         }
 
-        function calculate() {
-          if (validate()) {
-            var addString = '?startCity=' + document.getElementById("startCity").value;
-            addString += '&startState=' + document.getElementById("startState").value;
-            addString += '&endCity=' + document.getElementById("endCity").value;
-            addString += '&endState=' + document.getElementById("endState").value;
-            
-            var url = "http://localhost:9999/cgi-bin/cs213/mileageAjaxJSON" + addString;
-            //var url = "/cgi-bin/cs213/mileageAjaxJSON" + addString;
-            var httpReq = new XMLHttpRequest();
-            httpReq.open("GET", url, true);
-            httpReq.onload = function () {
-              var data = JSON.parse(httpReq.responseText);
-              console.log(data.trip);
-              document.getElementById("output").innerHTML = data.trip.miles;
-            }
-            httpReq.send();
-          } else {
-            unHide();
-          }
+
+      }
+
+      function button() {
+        if (validate()) {
+          document.getElementById("submit").disabled = false;
+          document.getElementById("output").innerHTML = "";
+          document.getElementById("button").focus();
+        } else {
+          document.getElementById("submit").disabled = true;
+          document.getElementById("output").innerHTML =
+            "<strong>One or more fields are emtpy. Please check your inputs.</strong>";
+        }
+      }
+
+
+
+
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Lobster&family=Roboto&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./css/main.css">
+  <title>Darrin Fry Week 12 Mileage Calculator</title>
+  <meta name="description" content="Mileage Calculator CS213 Week 12">
+
+</head>
+
+<body class="body-group">
+  <header class="header-group">
+    <div>
+      <div class="heading">
+        <h1>Week 12 Mileage Calculator</h1>
+        <h3>Point to Point Distance Calculator</h3>
+      </div>
+      <nav>
+        <ul class="navigation">
+          <li><a class="ham" href="#">&#9776; Menu</a></li>
+          <li><a class="index" href="../index.html">CS213 Assignments</a></li>
+
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero-image">
+  </div>
+
+  <div class="main-content">
+    <h2>Tell us where you are and where you want to go.</h2>
+
+    <div class="content-grid">
+      <div id="form-input">
+        <div class="player">
+          <h3>Please enjoy this audio sampling of previous a previous entry.</h3>
+          <video controls="" autoplay name="media">
+            <source src="http://soundsofdisneyland.com/AudioFiles/Club%2033/15%20Grim%20Grinning%20Ghosts.mp3"
+              type="audio/mpeg"></video>
+        </div>
+        <div class="form">
+          <h2>Festival Registration Form</h2>
+          <form class="inputs">
+            <label for="performance">performance Type:</label>
+            <select id="performance" name="performance">
+              <option>SOLO</option>
+              <option>DUET</option>
+              <option>CONCERTO</option>
+            </select>
+            <br>
+            <div class="student_1">
+              <label for="first_name">First Name:</label>
+              <input type="text" name="first_name" id="first_name" required>
+              <label for="last_name">Last Name:</label>
+              <input type="text" name="last_name" id="last_name" required>
+              <br>
+              <label for="student_id">Student ID:</label>
+              <input type="number" name="student_id" id="student_id" required>
+            </div>
+            <div class="student_2">
+              <label for="first_name_2">First Name:</label>
+              <input type="text" name="first_name_2" id="first_name_2" required>
+              <label for="last_name_2">Last Name:</label>
+              <input type="text" name="last_name_2" id="last_name_2" required>
+              <br>
+              <label for="student_id_2">Student ID:</label>
+              <input type="number" name="student_id_2" id="student_id_2" required>
+            </div>
+            <div class="instrument_list">
+              <label>Select Skill Level:</label>
+              <input type="radio" id="skilllevel_0" class="level" name="skill" value="beginner" required="">
+              <label">Beginner
+                <input type="radio" id="skilllevel_1" class="level" name="skill" value="intermediate" required="">
+                <label">Intermediate
+                  <input type="radio" id="skilllevel_2" class="level" name="skill" value="pre-advanced" required="">
+                  <label>Pre-advanced</label>
+                  <input type="radio" id="skilllevel_3" class="level" name="skill" value="advanced" required="">
+                  <label>Advanced</label>
+                  <br><br>
+                  <label>Select Instrument:</label>
+                  <input type="radio" id="instrument_0" class="instrument" name="instrument" value="piano" required="">
+                  <label">Piano
+                    <input type="radio" id="instrument_1" class="instrument" name="instrument" value="voice"
+                      required="">
+                    <label">Voice
+                      <input type="radio" id="instrument_2" class="instrument" name="instrument" value="string"
+                        required="">
+                      <label>String</label>
+                      <input type="radio" id="instrument_3" class="instrument" name="instrument" value="organ"
+                        required="">
+                      <label>Organ</label>
+                      <input type="radio" id="instrument_4" class="instrument" name="instrument" value="other"
+                        required="">
+                      <label>Other</label>
+                      <div id="location">
+                        <!-- Input for building / location-->
+                        <label for="location">Choose a building:</label>
+                        <select name="location" id="building" required onchange="getLocation()">
+                          <option value=""></option>
+                          <option value="snow">Snow</option>
+                          <option value="taylor">Taylor</option>
+                          <option value="mckay">McKay</option>
+                        </select>
+                        <!-- Input for building / location-->
+                        <label for="room">and room:</label>
+                        <select name="room" id="room" required>
+                          <option value=""></option>
+
+                        </select>for your performance.
+                      </div>
+                      <br>
+                      <div id="time">
+                        <!-- Input for appointment time -->
+                        <label for="timeslot">Choose a time slot from the list:</label>
+                        <input list="slots" name="time_slot" id="timeslot" size="7" required="required">
+                        <datalist id="slots">
+                          <option value="8:00 am">
+                          <option value="9:00 am">
+                          <option value="10:00 am">
+                          <option value="11:00 am">
+                          <option value="1:00 pm">
+                          <option value="2:00 pm">
+                          <option value="2:00 pm">
+                          <option value="3:00 pm">
+                        </datalist>
+                      </div>
+                      <br>
+                      <div id="urlmessage"></div>
+
+                      <!-- reset and submit buttons -->
+                      <!-- <button id="submit" type="button" name="register" value="Register" onclick="getMiles()">Register</button> -->
+                      <input id="submit" type="button" name="register" value="Register" onclick="doReg()">
+                      <input id="clear" type="reset" name="clear" value="Clear">
+                      <button id="getdata" type="button" name="getdata" onclick="getData()">Get Data</button>
+                      <p id="errormessage"></p>
+          </form>
+
+        </div>
+        <hr>
+        <div id="registration_info">
+
+        </div>
+      </div>
+
+    </div>
+
+
+    <footer class="footer-content">
+      <p>&copy; 2020 | Darrin Fry | Utah |
+        <a href="https://www.byui.edu/online " target="_blank">BYUI Online Learning</a> </p>
+      <script>
+        const hambutton = document.querySelector(".ham");
+        hambutton.addEventListener("click", toggleMenu, false);
+
+        function toggleMenu() {
+          document.querySelector(".navigation").classList.toggle("responsive");
         }
       </script>
+
+    </footer>
+
+</body>
+
+</html>

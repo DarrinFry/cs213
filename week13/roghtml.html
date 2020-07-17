@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fall Festival Competition | Registration</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="rogjs.js"></script>
+</head>
+<body onload="loadDisplay()">
+    <header>
+        <img class="piano" src="piano.png" alt="piano">
+        <div class="title">
+            <h1>Fall Festival Competition</h1>
+            <h2>-Registration-</h2>
+        </div>
+    </header>
+    <main>
+        <div id="regForm">
+        <h3>Registration Form</h3>
+        <form>
+            
+            <fieldset>
+                <legend>Performance Type</legend>
+                <label><input type="radio" name="performance" value="Solo" oninput="removeStudent()">Solo</label><br>
+                <label><input type="radio" name="performance" value="Duet" oninput="addStudent()">Duet</label><br>
+                <label><input type="radio" name="performance" value="Concerto" oninput="removeStudent()">Concerto</label>
+            </fieldset>
+            
+            <fieldset id="studentInfo">
+                <legend>Student Information</legend>
+                <label class="top" for="first_name">First Name</label>
+                <input type="text" name="first_name" id="first_name">
+
+                <label class="top" for="last_name">Last Name</label>
+                <input type="text" name="last_name" id="last_name">
+
+                <label class="top" for="student_id">Student ID</label>
+                <input type="number" name="student_id" id="student_id">
+            </fieldset>
+            
+            <fieldset>
+                <legend>Performance Information</legend>
+                <label class="top" for="skill">Skill Level</label>
+                <select name="skill" id="skill">
+                    <option disabled selected id="skill_select">Select</option>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Pre-advanced">Pre-advanced</option>
+                    <option value="Advanced">Advanced</option>
+                </select>
+
+                <label class="top">Instrument</label>
+                <select name="instrument" id="instrument">
+                    <option disabled selected id="instrument_select">Select</option>
+                    <option id="instrument_0" value="Piano">Piano</option>
+                    <option id="instrument_1" value="Voice">Voice</option>
+                    <option id="instrument_2" value="String">String</option>
+                    <option id="instrument_3" value="Organ">Organ</option>
+                    <option id="instrument_4" value="Other">Other</option>
+                </select>
+
+                <label class="top" for="location">Name of Building</label>
+                <input type="text" name="location" id="location">
+
+                <label class="top" for="room">Room Number</label>
+                <input type="number" name="room" id="room">
+
+                <label class="top" for="time_slot">Time Slot</label>
+                <select name="time_slot" id="time_slot">
+                    <option disabled selected id="time_select">Select</option>
+                    <option value="8:00">8:00am</option>
+                    <option value="8:15">8:15am</option>
+                    <option value="8:30">8:30am</option>
+                    <option value="8:45">8:45am</option>
+                    <option value="9:00">9:00am</option>
+                </select>
+            </fieldset>
+
+            <p id="message"></p>
+            <input type="reset" name="clear" id="clear" value="Clear" onclick="resetForm()">
+            <input type="submit" name="register" id="register" value="Register" onclick="updateDisplay()">
+        </form>
+        </div>
+        <div class="display">
+            <h3>Registered Performances</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Student(s)</td>
+                        <td>Location</td>
+                        <td>Time</td>
+                        <td>Performance</td>
+                    </tr>
+                </thead>
+                <tbody id="registered">
+
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <footer>
+        <p>&copy;2020</p>
+    </footer>
+</body>
+</html>
