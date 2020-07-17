@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment #12</title>
+  <style>
+    body {
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      background-color: white;
+      font-size: 1.5rem;
+    }
+
+    header {
+      grid-column: 2/12;
+      background-color: #612dcb;
+      color: white;
+      padding: 10px 50px 10px 50px;
+      margin: auto;
+      text-align: center;
+      border-radius: 5px;
+    }
+
+    input {
+      font-size: 1.5rem;
+      margin-top: 10px;
+    }
+
+    .locations {
+      display: inline-block;
+      margin: 20px 5px 10px 10px;
+    }
+    .locationField {
+      border-radius: 5px;
+    }
+
+    .state {
+      width: 4rem;
+    }
+    #instructions {
+      margin: 15px;
+    }
+    #outputDiv {
+      margin: 10px;
+    }
+
+    button {
+      display: block;
+      margin: 10px 0px 10px 10px;
+      font-size: 1.5rem;
+    }
+
+    small {
+      visibility: hidden;
+    }
+
+    .formElement.error input {
+      box-shadow: 0 0 5px rgba(255,81,49,1);
+      border: 2px solid rgba(255,81,49,1);
+      border-style: groove;
+      /* border-color: #ff5131;*/
+    }
+
+    .formElement.error input[type=text] {
+      box-shadow: 0 0 5px rgba(255,81,49,1);
+      border: 1px solid rgba(255,81,49,1);
+    }
+
+    .formElement.success input {
+      border: 1px solid gray;
+    }
+
+    .formElement.error small {
+      visibility: visible;
+      color: #ff5131;
+    }
+    @media only screen and (max-width: 400px) {
+      body,input,button,h1 {
+        font-size: 0.8rem;
+      }
+    }
+
+    @media only screen and (min-width: 400px) {
+      body,input,button,h1 {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media only screen and (min-width: 600px) {
+      body,input,button,h1 {
+        font-size: 1rem;
+      }
+    }
+    @media only screen and (min-width: 800px) {
+      body,input,button,h1 {
+        font-size: 1.2rem;
+      }
+    }
+    @media only screen and (min-width: 1000px) {
+      body,input,button,h1 {
+        font-size: 1.35rem;
+      }
+    }
+    @media only screen and (min-width: 1500px) {
+      body,input,button,h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body onload="validateInput()">
+  <header>
+    <h1>Mileage Calculator</h1>
+  </header>
+  <div id="instructions">
+    <p>Compute distance between major U.S. cities</p>
+  </div>
+  <div id="startDiv" class="locations">
+    <fieldset id="startLocation" class="locationField">
+      <legend>Starting Location</legend>
+      <div>
+        <label for="startCity">City:</label>
+        <input type="text" name="startCity" id="startCity" placeholder="San Francisco" oninput="validateStartCity()"><br>
+        <small>Error message</small>
+      </div>
+      <div>
+        <label for="startState">State:</label>
+        <input type="text" id="startState" name="startState" class="state" placeholder="CA"
+          oninput="validateStartState()"><br>
+        <small>Error message</small>
+      </div>
+
+    </fieldset>
+  </div>
+
+  <div id="endDiv" class="locations">
+    <fieldset id="endLocation" class="locationField">
+      <legend>Destination</legend>
+      <div>
+        <label for="endCity">City:</label>
+        <input type="text" name="endCity" id="endCity" placeholder="New York" oninput="validateEndCity()"><br>
+        <small>Error message</small>
+      </div>
+      <div>
+        <label for="endState">State:</label>
+        <input type="text" name="endState" id="endState" class="state" placeholder="NY" oninput="validateEndtState()"><br>
+        <small>Error message</small>
+      </div>
+    </fieldset>
+  </div>
+    <button id="submit" onclick="getMileage()">Calculate Distance</button>
+  <div id="outputDiv">
+    <p id="distance"></p>
+  </div>
+  <p><a href="../index.html">CS 213 Assignments</a></p>
+  <script>
+    const startCity = document.getElementById('startCity');
+    const startState = document.getElementById('startState');
+    const endCity = document.getElementById('endCity');
+    const endState = document.getElementById('endState');
+    
+    var startCityIsValid = false;
+    var startStateIsValid = false;
+    var endCityIsValid = false;
+    var endStateIsValid = false;
+
+    function getMileage() {
+      var urlWithParams = "/cgi-bin/cs213/mileageAjaxJSON";
+      var startCityVal = fixCity(startCity.value.trim().split(" "));
+      var endCityVal = fixCity(endCity.value.trim().split(" "));
+
+      urlWithParams = urlWithParams.concat('?startCity=');
+      urlWithParams = urlWithParams.concat(startCityVal);
+      urlWithParams = urlWithParams.concat('&startState=');
+      urlWithParams = urlWithParams.concat(startState.value.trim());
+      urlWithParams = urlWithParams.concat('&endCity=');
+      urlWithParams = urlWithParams.concat(endCityVal);
+      urlWithParams = urlWithParams.concat('&endState=');
+      urlWithParams = urlWithParams.concat(endState.value.trim());
+
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200){
+          results = JSON.parse(this.responseText);
+          
+          if (results.trip.miles == "Unknown") {
+            document.getElementById("distance").innerHTML="Distance cannot be calculated between <strong>" + results.trip.startcity + ", " + results.trip.startstate + "</strong> and <strong>" + results.trip.endcity + ", " + results.trip.endstate + "</strong>.  Try another starting location or destination.";
+          } else {
+            document.getElementById("distance").innerHTML="Distance from <strong>" + results.trip.startcity + ", " + results.trip.startstate + "</strong> to <strong>" + results.trip.endcity + ", " + results.trip.endstate + "</strong>: " +results.trip.miles + " miles";
+          }
+
+        }
+      };
+      xhttp.open("GET", urlWithParams, true);
+      xhttp.send();
+    }
+
+    function fixCity(splitString) {
+      var cityName = "";
+      for (var i = 0; i < splitString.length; i++) {
+        splitString[i] = splitString[i].charAt(0).toUpperCase() + splitString[i].substr(1).toLowerCase() + " ";
+        cityName = cityName.concat(splitString[i]);
+      }
+      cityName = cityName.trim();
+      return cityName;
+    }
+
+    function validateStartCity() {
+      var city = startCity.value.trim();
+      cityRegEx = new RegExp(/([a-zA-Z]+\s[a-zA-Z]+)|([a-zA-Z]+)/);
+      if (!cityRegEx.test(city)) {
+        setErrorFor(startCity,'Enter a city name');
+        startCityIsValid = false;
+      } else {
+        setSuccessFor(startCity);
+        startCityIsValid = true;
+      }
+      validateInput();
+    }
+    function validateStartState() { 
+      var state = startState.value.trim();
+      stateRegEx = new RegExp(/^([A-Z]{2})\b/);
+      if (!stateRegEx.test(state)) {
+        setErrorFor(startState, 'Use two letter USPS state abbreviation');
+        startStateIsValid = false;
+      } else {
+        setSuccessFor(startState);
+        startStateIsValid = true;
+      }
+      validateInput();
+    }
+    function validateEndCity() {
+      var city = endCity.value.trim();
+      cityRegEx = new RegExp(/([a-zA-Z]+\s[a-zA-Z]+)|([a-zA-Z]+)/);
+      if (!cityRegEx.test(city)) {
+        setErrorFor(endCity,'Enter a city name');
+        endCityIsValid = false;
+      } else {
+        setSuccessFor(endCity);
+        endCityIsValid = true;
+      }
+      validateInput();
+    }
+    function validateEndtState() {
+      var state = endState.value.trim();
+      stateRegEx = new RegExp(/^([A-Z]{2})\b/);
+      if (!stateRegEx.test(state)) {
+        setErrorFor(endState, 'Use two letter USPS state abbreviation');
+        endStateIsValid = false;
+      } else {
+        setSuccessFor(endState);
+        endStateIsValid = true;
+      }
+      validateInput();
+    }
+
+    function validateInput() {
+      
+      if (startCityIsValid && startStateIsValid && endCityIsValid && endStateIsValid) {
+        document.getElementById('submit').disabled=false;
+      } else {
+        document.getElementById('submit').disabled=true;
+      }
+    }
+
+
+    function setErrorFor(input, message) {
+      const formElem = input.parentElement;
+      const smallTxt = formElem.querySelector('small')
+      smallTxt.innerText = message;
+      formElem.className = 'formElement error';
+    }
+
+    function setSuccessFor(input) {
+      const formElem = input.parentElement;
+      formElem.className = 'formElement success';
+    }
+  </script>
+</body>
+
+</html>

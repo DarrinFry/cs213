@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Lobster&family=Roboto&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./css/main.css">
+  <title>Darrin Fry Week 13 Student Piano Registration</title>
+  <meta name="description" content="A calculator for CS213 Week 7">
+
+</head>
+
+<body class="body-group" onload="checkTotal()">
+  <header class="header-group">
+    <div>
+      <div class="heading">
+        <h1>Week 13 Student Piano Registration</h1>
+        <h3>(and a little music too.)</h3>
+      </div>
+      <nav>
+        <ul class="navigation">
+          <li><a class="ham" href="#">&#9776; Menu</a></li>
+          <li><a class="index" href="../index.html">CS213 Assignments</a></li>
+
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero-image">
+  </div>
+
+  <div class="main-content">
+    <video controls="" autoplay name="media"><source src="http://soundsofdisneyland.com/AudioFiles/Club%2033/15%20Grim%20Grinning%20Ghosts.mp3" type="audio/mpeg"></video>
+  </div>
+
+
+    <footer class="footer-content">
+      <p>&copy; 2020 | Darrin Fry | Utah |
+        <a href="https://www.byui.edu/online " target="_blank">BYUI Online Learning</a> </p>
+      <script>
+        const hambutton = document.querySelector(".ham");
+        hambutton.addEventListener("click", toggleMenu, false);
+
+        function toggleMenu() {
+          document.querySelector(".navigation").classList.toggle("responsive");
+        }
+      </script>
+    
+    </footer>
+
+</body>
+
+</html>
