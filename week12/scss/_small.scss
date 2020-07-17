@@ -1,0 +1,114 @@
+
+nav, footer {
+  background-color:$secondaryColor;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+nav li .current {
+  background-color: rgba(255, 255, 255, .60);
+}
+.navigation {
+  list-style: none;
+  padding: 0em;
+}
+.navigation li:first-child {
+  display: block;
+}
+.navigation li {
+  display: none;
+}
+.navigation a {
+  display: block;
+  color: black;
+  padding: 0.5rem;
+  text-align: center;
+  text-decoration: none;
+}
+.navigation .active{
+  background-color: $mainColor;
+}
+.navigation a:hover {
+color: #000;
+  background-color: rgba(255, 255, 255, .60);
+  font-weight: 700;
+}
+.responsive li {
+	display: block;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: $paraFont;
+}
+.hero-image {
+  background-image: url("../images/Render\ \(June\ 09\,\ 204920\).png");
+  background-color: #cccccc;
+  height: 400px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+   
+}
+
+
+h1, h2, h3 {
+  text-align: center;
+}
+h1 {
+  font-family: $universityFont;
+  padding-top: 20px;
+  margin-top: 0;
+}
+h3{
+  padding-bottom: 20px;
+  margin-bottom: 0;
+  font-family: $headingFont;
+}
+
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 80%;
+    margin: auto;
+    padding: 20px;
+  }
+
+  .gallery-group {
+    max-width: 98%;
+    margin: .1rem auto; 
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr; 
+    justify-content: center;
+  }
+  img {
+    padding-top: 20px;
+    max-width: 95%;
+    height: auto;
+  }
+ 
+  figcaption {
+    width: 80%;
+  }
+  figure {
+    margin-top: .20em;
+    margin-bottom: .20em;
+    margin-left: .20em;
+    margin-right: .20em;
+  }
+.checkBoxBorder {
+  border: 3px solid black;
+}
+#hideInput{
+  display: none;
+}
+.formDiv {
+  padding: 40px;
+  margin-top: 40px;
+  margin: auto;
+  width: 60%;
+}

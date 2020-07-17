@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chris Brookhart Assignment 12</title>
+
+  <style>
+    input {
+      margin: 0em 0em 1em 0em;
+      width: 20%;
+      height: 2em;
+    }
+
+    #mileage_output table {
+      width: 70%;
+    }
+
+    tr {
+      height: 2em;
+    }
+
+    table th, table td{
+        padding: 5px; /* Apply cell padding */
+    }
+
+  .validation_error_text {
+    color: red;
+  }
+
+
+  </style>
+
+  <script>
+    
+
+    function get_distance() {
+
+      var URL_BASE = "/cgi-bin/cs213/mileageAjaxJSON";
+      var startCity = document.getElementById("startCity").value;
+      startCity = toTitleCase(startCity);
+      var startState = document.getElementById("startState").value;
+      startState = toUpper(startState);
+      var endCity = document.getElementById("endCity").value;
+      endCity = toTitleCase(endCity);
+      var endState = document.getElementById("endState").value;
+      endState = toUpper(endState);
+
+      var url_end = "?startCity=" + startCity + "&startState=" + startState + "&endCity=" + endCity + "&endState="+ endState;
+
+        var xhttp = new XMLHttpRequest();
+        var url_string = URL_BASE + url_end;
+
+        //var url_string = "/cgi-bin/cs213/mileageAjaxJSON?startCity=boise&startState=ID&endCity=denver&endState=CO";
+        //var url_string = "/cgi-bin/cs213/mileageAjaxJSON?startCity=boiseID&endCity=denverCO"; // gets a response, but doesn't provide miles
+        //var url_string = "/cgi-bin/cs213/mileageAjaxJSON?startcity=boiseID&startstate=ID&endcity=denverCO&endstate=CO";
+        //var url_string = "http://localhost:9999/cgi-bin/cs213/mileageAjaxJSON?startState=ID&startCity=Boise&endCity=Denver&endState=CO"; // WORKS!
+        // var url_string = "/cgi-bin/cs213/mileageAjaxJSON?startState=ID&startCity=Boise&endCity=Denver&endState=CO"; // WORKS!!
+
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            var mileageJSON = this.responseText;
+
+            var mileage_array = JSON.parse(mileageJSON);
+            var mileage = mileage_array.trip.miles;
+            if (mileage_array.trip.tmode) {
+              var modeInput = mileage_array.trip.tmode;
+            }
+            var tmode = "";
+
+
+            if (!modeInput){
+              tmode = "None listed";
+            }
+            else {
+              for (i=0; i < modeInput.length; i++) {
+                tmode += mileage_array.trip.tmode[i];
+                if (i != modeInput.length-1){
+                  tmode += ", ";
+                }
+              }
+            }
+
+
+            table = displayMileageAsTable(startCity, startState, endCity, endState, mileage, tmode);
+
+            var mileage_table = document.getElementById("mileage_output")
+            mileage_table.innerHTML = "";
+            mileage_table.appendChild(table);
+
+          }
+        };
+        xhttp.open("POST", url_string, true);
+        xhttp.send();
+
+    }
+
+    function validate() {
+      var exp_rg = /^[A-Za-z]{2}$/;
+      var exp_rg_cities = /[A-Za-z]/;
+      var startCity = document.getElementById("startCity").value;
+      var startState = document.getElementById("startState").value;
+      var endCity = document.getElementById("endCity").value;
+      var endState = document.getElementById("endState").value;
+      
+
+      var start_test = exp_rg.test(startState);
+      var end_test = exp_rg.test(endState);
+      var start_city_test = exp_rg_cities.test(startCity);
+      var end_city_test = exp_rg_cities.test(endCity);
+
+      document.getElementById("start_error").innerHTML = "";
+      document.getElementById("end_error").innerHTML = "";
+      document.getElementById("start_city_error").innerHTML = "";
+      document.getElementById("end_city_error").innerHTML = "";
+
+      if (start_test == false || end_test == false || start_city_test == false || end_city_test == false) {
+        if (end_test == false) {
+          document.getElementById("end_error").innerHTML = "You must use a two-letter state abbreviation code."
+          document.getElementById("end_error").focus();
+        }
+        if (end_city_test == false) {
+          document.getElementById("end_city_error").innerHTML = "You must fill in an end city"
+          document.getElementById("end_city_error").focus();
+        }
+        if (start_test == false) {
+          document.getElementById("start_error").innerHTML = "You must use a two-letter state abbreviation code."
+          document.getElementById("start_error").focus();
+        }
+        if (start_city_test == false) {
+          document.getElementById("start_city_error").innerHTML = "You must fill in a start city"
+          document.getElementById("start_city_error").focus();
+        }
+        return;
+      }
+      else {
+        get_distance();
+      }
+    }
+
+
+    function displayMileageAsTable(startCity, startState, endCity, endState, mileage, tmodes) {
+
+
+      //Create a HTML Table element.
+      var table = document.createElement("TABLE");
+      table.border = "1";
+
+      //Add the header row.
+      var row = table.insertRow();
+      var headerCell = document.createElement("TH");
+      var headerCell2 = document.createElement("TH");
+      var headerCell3 = document.createElement("TH");
+      var headerCell4 = document.createElement("TH");
+      headerCell.innerHTML = "Starting Location";
+      row.appendChild(headerCell);
+      headerCell2.innerHTML = "Ending Location";
+      row.appendChild(headerCell2);
+      headerCell3.innerHTML = "Distance in Miles";
+      row.appendChild(headerCell3);
+      headerCell4.innerHTML = "Transportation Modes";
+      row.appendChild(headerCell4);
+
+      row = table.insertRow();
+      var tstart = row.insertCell();
+      var tend = row.insertCell();
+      var tmiles = row.insertCell();
+      var tmode = row.insertCell();
+
+      startString = startCity + ", " + startState;
+      endString = endCity + ", " + endState;
+      tstart.innerHTML = startString;
+      tend.innerHTML = endString;
+      tmiles.innerHTML = mileage;
+      tmode.innerHTML = tmodes;
+      
+      return table;
+      
+    }  
+
+    function toTitleCase(str) {
+      return str.charAt(0).toUpperCase() + str.substr(1).toLowerCase();
+    }
+    
+
+    function toUpper(str) {
+      return str.toUpperCase();
+    }
+
+        
+  </script>
+
+</head>
+
+<body>
+
+<h1>MILEAGE CALCULATOR</h1>
+<h2>Input two cities:</h2>
+<div id="form">
+  <form id="cities" name="cities">
+    <p>Start City:</p>
+    <p id="start_city_error" class="validation_error_text"></p>
+    <input type="text" id="startCity" name="startCity" required><br>
+    <p>Start State:</p>
+    <p id="start_error" class="validation_error_text"></p>
+    <input type="text" id="startState" name="startState" required placeholder="CA" ><br>
+    <p>End City:</p>
+    <p id="end_city_error" class="validation_error_text"></p>
+    <input type="text" id="endCity" name="endCity" required><br>
+    <p>End State:</p>
+    <p id="end_error" class="validation_error_text"></p>
+    <input type="text" id="endState" name="endState" required placeholder="CA" ><br>
+    <button type="button" id="submit" onclick="validate();">Submit</button>
+  </form><br>
+  <div id="mileage_output"></div>
+</div>
+
+
+
+
+</body>
+
+</html>

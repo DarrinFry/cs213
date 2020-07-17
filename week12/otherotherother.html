@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jack Deller's Assignment week 12</title>
+</head>
+<body onload="load()">
+<header><h1>Millage for You</h1></header>
+
+<form>
+    <label for="startState">Starting State</label>
+    <input type="text" maxlength="2" name="startState" id="startState">
+
+    <label for="startCity">Starting City</label>
+    <input type="text" name="startCity" id="startCity">
+    <hr>
+    <label for="endState">End State</label>
+    <input type="text" maxlength="2" name="endState" id="endState"> 
+
+    <label for="endCity">End City</label>
+    <input type="text" name="endCity" id="endCity"> 
+    <hr>
+    <button type="button" name="submit" id="submit" onclick="calculate()">Submit</button>
+</form>
+<p id="error">One or more fields are emtpy</p>
+<p id="returnValue"></p>
+
+<script>
+
+function validateForm(){
+    if(document.getElementById("startState").value == ''){
+        console.log("startState");
+        return false;
+    }
+    if(document.getElementById("startCity").value == ''){
+        console.log("startCity");
+        return false;
+    }
+    if(document.getElementById("endState").value == ''){
+        console.log("endState");
+        return false;
+    }
+    if(document.getElementById("endCity").value == ''){
+        console.log("endtCity");
+        return false;
+    }
+    return true;
+}
+
+function load(){
+    console.log("page load");
+    hide();
+}
+
+function hide(){
+    document.getElementById("error").style.display = "none";
+}
+
+function unHide(){
+    document.getElementById("error").style.display = "block";
+}
+
+function calculate(){
+    if(validateForm()){
+        hide();
+        var addString = '?startCity=' + document.getElementById("startCity").value;
+        addString += '&startState=' + document.getElementById("startState").value;
+        addString += '&endCity=' + document.getElementById("endCity").value;
+        addString += '&endState=' + document.getElementById("endState").value;
+        console.log(addString);
+
+        //http://localhost:9000/cgi-bin/cs213/mileageAjaxJSON?startState=ID&startCity=Boise&endState=CO&endCity=Denver
+
+        var url = "/cgi-bin/cs213/mileageAjaxJSON" + addString;
+        var httpReq = new XMLHttpRequest();
+        httpReq.open("GET", url, true);
+        httpReq.onload = function(){
+            var data = JSON.parse(httpReq.responseText);
+            console.log(data.trip);
+            document.getElementById("returnValue").innerHTML = data.trip.miles;
+        }
+        httpReq.send();
+    }else{
+        unHide();
+    }
+}
+</script>
+</body>

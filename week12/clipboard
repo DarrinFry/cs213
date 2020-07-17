@@ -1,0 +1,39 @@
+<script>
+        function validate() {
+          if (document.getElementById("startState").value == '') {
+            return false;
+          }
+          if (document.getElementById("startCity").value == '') {
+            return false;
+          }
+          if (document.getElementById("endState").value == '') {
+            return false;
+          }
+          if (document.getElementById("endCity").value == '') {
+            return false;
+          }
+          return true;
+        }
+
+        function calculate() {
+          if (validate()) {
+            var addString = '?startCity=' + document.getElementById("startCity").value;
+            addString += '&startState=' + document.getElementById("startState").value;
+            addString += '&endCity=' + document.getElementById("endCity").value;
+            addString += '&endState=' + document.getElementById("endState").value;
+            
+            var url = "http://localhost:9999/cgi-bin/cs213/mileageAjaxJSON" + addString;
+            //var url = "/cgi-bin/cs213/mileageAjaxJSON" + addString;
+            var httpReq = new XMLHttpRequest();
+            httpReq.open("GET", url, true);
+            httpReq.onload = function () {
+              var data = JSON.parse(httpReq.responseText);
+              console.log(data.trip);
+              document.getElementById("output").innerHTML = data.trip.miles;
+            }
+            httpReq.send();
+          } else {
+            unHide();
+          }
+        }
+      </script>

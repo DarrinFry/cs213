@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Lobster&family=Roboto&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./css/main.css">
+  <title>Darrin Fry Week 12 Mileage Calculator</title>
+  <meta name="description" content="Mileage Calculator CS213 Week 12">
+
+</head>
+
+<body class="body-group">
+  <header class="header-group">
+    <div>
+      <div class="heading">
+        <h1>Week 12 Mileage Calculator</h1>
+        <h3>Point to Point Distance Calculator</h3>
+      </div>
+      <nav>
+        <ul class="navigation">
+          <li><a class="ham" href="#">&#9776; Menu</a></li>
+          <li><a class="index" href="../index.html">CS213 Assignments</a></li>
+
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero-image">
+  </div>
+
+  <div class="main-content">
+    <h2>Tell us where you are and where you want to go.</h2>
+    
+    <div class="content-grid">
+      <div id="form-input">
+        <form onchange="button()">
+          <p>Please use the two letter state abbreviation.</p>
+          <label for="startCity">Starting City:</label>
+          <br>
+          <input type="text" name="startCity" id="startCity" placeholder="Starting City">
+          <br>
+          <label for="startState">Starting State:</label>
+          <br>
+          <input type="text" maxlength="2" name="startState" id="startState" placeholder="Starting State">
+          <br>
+          <label for="endCity">Destination City:</label>
+          <br>
+          <input type="text" name="endCity" id="endCity" placeholder="Destination City">
+          <br>
+          <label for="endState">Destination State:</label>
+          <br>
+          <input type="text" maxlength="2" name="endState" id="endState" placeholder="Destination State">
+          <br>
+          <br>
+          <button type="button" name="submit" id="submit" onclick="calculate()" disabled="true" >Submit</button>
+        </form>
+        <p id="output"></p>
+      </div>
+
+    </div>
+
+
+    <footer class="footer-content">
+      <p>&copy; 2020 | Darrin Fry | Utah |
+        <a href="https://www.byui.edu/online " target="_blank">BYUI Online Learning</a> </p>
+      <script>
+        const hambutton = document.querySelector(".ham");
+        hambutton.addEventListener("click", toggleMenu, false);
+
+        function toggleMenu() {
+          document.querySelector(".navigation").classList.toggle("responsive");
+        }
+      </script>
+      <script>
+        function validate() {
+          if ((document.getElementById("startState").value == '') || (document.getElementById("startCity").value == '') || (document.getElementById("endState").value == '')  || (document.getElementById("endCity").value == '')) {
+            
+            return false;
+          }
+         
+          return true;
+        }
+        function button() {
+          if (validate()) {
+            document.getElementById("submit").disabled = false;
+            document.getElementById("output").innerHTML = "";
+            document.getElementById("button").focus();
+          } else {
+            document.getElementById("submit").disabled = true;
+            document.getElementById("output").innerHTML = "<strong>One or more fields are emtpy. Please check your inputs.</strong>";
+
+          }
+
+        }
+        function calculate() {
+          if (validate()) {
+            var startCity = document.getElementById("startCity").value;
+            var startState = document.getElementById("startState").value;
+            var endCity = document.getElementById("endCity").value;
+            var endState = document.getElementById("endState").value;
+
+            startCity = titleCase(startCity);
+            startState = startState.toUpperCase();
+            endCity = titleCase(endCity);
+            endState = endState.toUpperCase();
+
+            var addString = '?startCity=' + startCity + '&startState=' + startState + '&endCity=' + endCity + '&endState=' + endState;
+           
+            var url = "/cgi-bin/cs213/mileageAjaxJSON" + addString;
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (this.readyState == 4 && this.status == 200) {
+                result = JSON.parse(this.responseText);
+                if (result.trip.miles == "Unknown") {
+                  document.getElementById("output").innerHTML = "Your distance cannot be calculated. Please check your inputs and try again.";
+                } else {
+                  document.getElementById("output").innerHTML = "The Distance between " + result.trip.startcity +
+                    ", " + result.trip.startstate + " and " + result.trip.endcity + ", " + result
+                    .trip.endstate + " is <strong> " + result.trip.miles + " </strong> miles.";
+                }
+
+              }
+            };
+            xhttp.open("GET", url, true);
+            xhttp.send();
+          } else {
+            document.getElementById("output").innerHTML = "<strong>One or more fields are emtpy. Please check your inputs.</strong>";
+          }
+        }
+
+        // This code snipet was borrowed from https://www.freecodecamp.org/news/three-ways-to-title-case-a-sentence-in-javascript-676a9175eb27/
+        function titleCase(str) {
+          str = str.toLowerCase().split(' ');
+          for (var i = 0; i < str.length; i++) {
+            str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+          }
+          return str.join(' ');
+        }
+      </script>
+
+    </footer>
+
+</body>
+
+</html>
