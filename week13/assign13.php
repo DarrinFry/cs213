@@ -1,43 +1,40 @@
 <?php
-$errors = [];
+$fileName = "data/data.txt";
 
-//submission data
-$performance_type = $_POST["performance"];
+$performance = $_POST['performance'];
+$firstName = $_POST['first_name'];
+$lastName = $_POST['last_name'];
+$studentId = $_POST['student_id'];
+$skill = $_POST['skill'];
+$instrument = $_POST['instrument'];
+$location = $_POST['location'];
+$room = $_POST['room'];
+$time = $_POST['time_slot'];
 
-$first_name = $_POST["first_name"] ?? null;
-$last_name = $_POST["last_name"] ?? null;
-$student_id = intval($_POST["student_id"]) ?? null;
-
-$first_name_student_2 = $_POST["first_name_2"] ?? null;
-$last_name_student_2 = $_POST["last_name_2"] ?? null;
-$student_id_2 = intval($_POST["student_id_2"]) ?? null;
-
-$skill_level = $_POST["skill"] ?? null;
-$instrument = $_POST["instrument"] ?? null;
-$location = $_POST["location"] ?? null;
-$room_number = $_POST["room"] ?? null;
-$time_slot = $_POST["time_slot"] ?? null;
-
-
-//validate data
-if (!$skill_level || !$instrument || !$location || !$room_number || !$time_slot || !$first_name || !$last_name || !$student_id) {
-    $errors[] = "Missing required fields.";
+if (isset($_POST['first_name_2'])) {
+    $firstName2 = $_POST['first_name_2'];
+}
+if (isset($_POST['last_name_2'])) {
+    $lastName2 = $_POST['last_name_2'];
+}
+if (isset($_POST['student_id_2'])) {
+    $studentId2 = $_POST['student_id_2'];
 }
 
-$prevData = @file_get_contents("data/regData.txt");
-
-if (!empty($errors)) {
-    echo json_encode($errors);
-    die();
+if (isset($firstName2)) {
+    $string = $firstName." ".$lastName." and ".$firstName2." ".$lastName2.",";
+    $string .= "Room number ".$room." in building ".$location.",";
+    $string .= $time." AM,";
+    $string .= $performance." for ".$skill." ".$instrument."\n";
+}
+else {
+    $string = $firstName." ".$lastName.",";
+    $string .= "Room number ".$room." in building ".$location.",";
+    $string .= $time." AM,";
+    $string .= $performance." for ".$skill." ".$instrument."\n";
 }
 
-$prevData = $prevData ? json_decode($prevData, true) : [];
-$prevData[] = $_POST;
+file_put_contents($fileName, $string, FILE_APPEND);
 
-if (!file_put_contents("data/regData.txt", json_encode($prevData))) {
-    $errors[] = "Unable to write file.";
-}
-
-echo json_encode($errors);
-
+print file_get_contents($fileName);
 ?>

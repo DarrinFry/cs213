@@ -104,6 +104,23 @@ figure {
   margin: auto;
   width: 60%; }
 
+  table {
+    margin: auto; }
+  
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse; }
+  
+  th, td {
+    padding: 5px; }
+.player {
+  margin: 0 auto; 
+  width: 50%;
+}
+audio {
+  margin: auto;
+  width: 80%;
+}
 @media (min-width: 700px) {
   .navigation {
     display: flex; }

@@ -7,23 +7,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Lobster&family=Roboto&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="./css/main.css">
-  <title>Darrin Fry Week 12 Mileage Calculator</title>
+  <title>Darrin Fry Week 13 Music Performance Registration</title>
   <meta name="description" content="Mileage Calculator CS213 Week 12">
-
 </head>
 
-<body class="body-group" onload="loadDisplay()" onchange="validateInput()">
+<body class="body-group" onload="loadRegisteredData()" onchange="holyCrapIThinkIOverDidTheValidation()">
+
   <header class="header-group">
     <div>
       <div class="heading">
-        <h1>Week 12 Mileage Calculator</h1>
-        <h3>Point to Point Distance Calculator</h3>
+        <h1>Week 13 Music Performance Registration</h1>
+        <h3>(plus a fun song)</h3>
       </div>
       <nav>
         <ul class="navigation">
           <li><a class="ham" href="#">&#9776; Menu</a></li>
           <li><a class="index" href="../index.html">CS213 Assignments</a></li>
-
         </ul>
       </nav>
     </div>
@@ -35,40 +34,54 @@
   <div class="main-content">
     <div class="content-grid">
       <div id="form-input">
-        <div class="player">
-          <h3>Please enjoy this audio sampling of previous a previous entry.</h3>
 
-          <video controls="" autoplay name="media">
+        <!-- This is a little bonus to make the site more enjoyable. Real sites incorporate a variety of media.  
+          Enjoy this piano rendision of Grom Grinning Ghosts from Disneyland's Haunted Mansion-->
+        <div class="player">
+          <h3>While you fill out the form we hope you enjoy this audio sampling of previous a previous entry.</h3>
+          <audio controls="" autoplay>
             <source src="http://soundsofdisneyland.com/AudioFiles/Club%2033/15%20Grim%20Grinning%20Ghosts.mp3"
-              type="audio/mpeg"></video>
+              type="audio/mpeg"></audio>
         </div>
-        <div id="regForm">
+
+        <div id="form">
           <h3>Please fill out the form and click submit</h3>
-          <p style="text-align: center;"> Your accepted registration will be show below.</p>
+          <p style="text-align: center;"> Your accepted registration will be shown in the corresponding table.</p>
           <form>
 
-            <div>
-              <h4>Performance Type</h4>
-              <label><input type="radio" name="performance" value="Solo" oninput="removeStudent()">Solo</label><br>
-              <label><input type="radio" name="performance" value="Duet" oninput="addStudent()">Duet</label><br>
-              <label><input type="radio" name="performance" value="Concerto" oninput="removeStudent()">Concerto</label>
+            <div id="performanceType">
+              <h4>Performance Type:</h4>
+              <label><input type="radio" name="performance" value="Solo" oninput="oneStudents()">Solo</label><br>
+              <label><input type="radio" name="performance" value="Duet" oninput="twoStudents()">Duet</label><br>
+              <label><input type="radio" name="performance" value="Concerto" oninput="oneStudents()">Concerto</label>
             </div>
 
             <div id="studentInfo">
-              <h4>Student Information</h4>
-              <label class="top" for="first_name">First Name</label>
-              <input type="text" name="first_name" id="first_name">
-
-              <label class="top" for="last_name">Last Name</label>
-              <input type="text" name="last_name" id="last_name">
-
-              <label class="top" for="student_id">Student ID</label>
-              <input type="number" name="student_id" id="student_id">
+              <h4>Student Information:</h4>
+              <label for="first_name">First Name:</label>
+              <input type="text" name="first_name" id="first_name" placeholder="First Name">
+              <br>
+              <label for="last_name">Last Name:</label>
+              <input type="text" name="last_name" id="last_name" placeholder="Last Name">
+              <br>
+              <label for="student_id">Student ID:</label>
+              <input type="number" name="student_id" id="student_id" placeholder="Student ID">
+            </div>
+            <div id="studentInfo_2" hidden>
+              <h4>Duet Student Information:</h4>
+              <label for="first_name">First Name:</label>
+              <input type="text" name="first_name_2" id="first_name_2" placeholder="First Name">
+              <br>
+              <label for="last_name">Last Name:</label>
+              <input type="text" name="last_name_2" id="last_name_2" placeholder="Last Name">
+              <br>
+              <label for="student_id">Student ID:</label>
+              <input type="number" name="student_id_2" id="student_id_2" placeholder="Student ID">
             </div>
 
             <div>
-              <h4>Performance Information</h4>
-              <label class="top" for="skill">Skill Level</label>
+              <h4>Performance Information:</h4>
+              <label for="skill">Skill Level:</label>
               <select name="skill" id="skill">
                 <option disabled selected id="skill_select">Select</option>
                 <option value="Beginner">Beginner</option>
@@ -77,7 +90,7 @@
                 <option value="Advanced">Advanced</option>
               </select>
 
-              <label class="top">Instrument</label>
+              <label>Instrument:</label>
               <select name="instrument" id="instrument">
                 <option disabled selected id="instrument_select">Select</option>
                 <option id="instrument_0" value="Piano">Piano</option>
@@ -86,14 +99,8 @@
                 <option id="instrument_3" value="Organ">Organ</option>
                 <option id="instrument_4" value="Other">Other</option>
               </select>
-              <br><br>
-              <label class="top" for="location">Name of Building</label>
-              <input type="text" name="location" id="location">
 
-              <label class="top" for="room">Room Number</label>
-              <input type="number" name="room" id="room">
-
-              <label class="top" for="time_slot">Time Slot</label>
+              <label for="time_slot">Time Slot:</label>
               <select name="time_slot" id="time_slot">
                 <option disabled selected id="time_select">Select</option>
                 <option value="8:00">8:00am</option>
@@ -102,32 +109,41 @@
                 <option value="8:45">8:45am</option>
                 <option value="9:00">9:00am</option>
               </select>
+
+              <br><br>
+              <label for="location">Name of Building:</label>
+              <input type="text" name="location" id="location" placeholder="Building Name">
+
+              <label for="room">Room Number:</label>
+              <input type="number" name="room" id="room" placeholder="Room Number">
+
+              
             </div>
             <br><br>
-            <input type="submit" name="register" id="register" value="Register" onclick="updateDisplay()">
+            <input type="submit" name="register" id="register" value="Register" onclick="updateRegisteredData()">
 
             <input type="reset" name="clear" id="clear" value="Clear" onclick="resetForm()">
-          
+
             <p id="message" style="font-size: larger; font-weight: bold; color: red;"></p>
 
           </form>
         </div>
-        <div class="display">
-          <h3>Registered Performances</h3>
-          <table>
-            <thead>
-              <tr>
-                <td>Student(s)</td>
-                <td>Location</td>
-                <td>Time</td>
-                <td>Performance</td>
-              </tr>
-            </thead>
-            <tbody id="registered">
+      </div>
+      <div class="output">
+        <h3>Performances Currently Registered:</h3>
+        <table>
+          <thead>
+            <tr>
+              <td>Student(s) Name:</td>
+              <td>Performance Location:</td>
+              <td>Performance Time:</td>
+              <td>Performance Type:</td>
+            </tr>
+          </thead>
+          <tbody id="registered">
 
-            </tbody>
-          </table>
-        </div>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
@@ -145,75 +161,26 @@
       }
     </script>
     <script>
-      function addStudent() {
-        let secondStudent = document.getElementById('secondStudent');
-        if (secondStudent == null) {
-          let form = document.getElementById('studentInfo');
-
-          let student2 = document.createElement('div');
-
-          let p = document.createElement('p');
-
-          let fNameLabel = document.createElement('label');
-          let fNameInput = document.createElement('input');
-
-          let lNameLabel = document.createElement('label');
-          let lNameInput = document.createElement('input');
-
-          let idLabel = document.createElement('label');
-          let idInput = document.createElement('input');
-
-          student2.setAttribute("id", "secondStudent");
-
-          p.setAttribute("id", "student_2");
-          p.textContent = "Duet partner:";
-
-          fNameLabel.setAttribute("class", "top");
-          fNameLabel.setAttribute("for", "first_name_2");
-          fNameLabel.textContent = "First Name";
-          fNameInput.setAttribute("type", "text");
-          fNameInput.setAttribute("name", "first_name_2");
-          fNameInput.setAttribute("id", "first_name_2");
-
-          lNameLabel.setAttribute("class", "top");
-          lNameLabel.setAttribute("for", "last_name_2");
-          lNameLabel.textContent = "Last Name";
-          lNameInput.setAttribute("type", "text");
-          lNameInput.setAttribute("name", "last_name_2");
-          lNameInput.setAttribute("id", "last_name_2");
-
-          idLabel.setAttribute("class", "top");
-          idLabel.setAttribute("for", "student_id_2");
-          idLabel.textContent = "Student ID";
-          idInput.setAttribute("type", "number");
-          idInput.setAttribute("name", "student_id_2");
-          idInput.setAttribute("id", "student_id_2");
-
-          student2.appendChild(p);
-          student2.appendChild(fNameLabel);
-          student2.appendChild(fNameInput);
-          student2.appendChild(lNameLabel);
-          student2.appendChild(lNameInput);
-          student2.appendChild(idLabel);
-          student2.appendChild(idInput);
-
-          form.appendChild(student2);
-        }
+      //If the duet function is selected it will show the second students information.
+      function twoStudents() {
+        let student2 = document.getElementById('studentInfo_2');
+        student2.hidden = false;
       }
-
-      function removeStudent() {
-        let student2 = document.getElementById('secondStudent');
-        if (student2 != null) {
-          student2.remove();
-        }
+      //If the solo or concerto are selected the duet section will be hidden.
+      function oneStudents() {
+        let student2 = document.getElementById('studentInfo_2');
+        student2.hidden = true;
       }
-
+      //This will clear the error message and reset focus to the top of the page.
       function resetForm() {
         document.getElementById('message').innerHTML = "";
         document.getElementById('performance').focus();
       }
 
-      function validateInput() {
+      // Okay, I think I covered all the validation basics this time.  It is not eloquent, but I think it does what it is supposed to do.
+      // If there is no value the item gets focus, sends an error message and disables the register button.
+      // The error message is it's own variable so that I could easily change and call it.  It's just about the only simple approach i made... 
+      function holyCrapIThinkIOverDidTheValidation() {
         let message = document.getElementById('message');
         let performance = document.getElementsByName('performance');
         let first_name = document.getElementById('first_name');
@@ -227,86 +194,90 @@
         let room = document.getElementById('room');
         let time_slot = document.getElementById('time_select');
         let instrument = document.getElementById('instrument_select');
+        let error = "Please verify that all fields are inputed correctly and try again.";
 
         if (!performance[0].checked && !performance[1].checked && !performance[2].checked) {
-          message.innerHTML = "Fill out all fields";
+          message.innerHTML = error;
           document.getElementById("register").disabled = true;
           return false;
         } else if (first_name.value == "") {
-          message.innerHTML = "Fill out all fields";
+          message.innerHTML = error;
           first_name.focus();
           document.getElementById("register").disabled = true;
           return false;
         } else if (last_name.value == "") {
-          message.innerHTML = "Fill out all fields";
+          message.innerHTML = error;
           last_name.focus();
           document.getElementById("register").disabled = true;
           return false;
         } else if (student_id.value == "") {
-          message.innerHTML = "Fill out all fields";
+          message.innerHTML = error;
           student_id.focus();
           document.getElementById("register").disabled = true;
           return false;
         } else if (first_name_2 != null && first_name_2 == "") {
-          message.innerHTML = "Fill out all fields";
+          message.innerHTML = error;
           first_name_2.focus();
           document.getElementById("register").disabled = true;;
           return false;
         } else if (last_name_2 != null && last_name_2 == "") {
-          message.innerHTML = "Fill out all fields";
+          message.innerHTML = error;
           last_name_2.focus();
           document.getElementById("register").disabled = true;
           return false;
         } else if (student_id_2 != null && student_id_2 == "") {
-          message.innerHTML = "Fill out all fields";
+          message.innerHTML = error;
           student_id_2.focus();
           document.getElementById("register").disabled = true;
           return false;
         } else if (skill.selected) {
-          message.innerHTML = "Fill out all fields";
+          message.innerHTML = error;
           skill.focus();
           document.getElementById("register").disabled = true;
           return false;
         } else if (instrument.selected) {
-          message.innerHTML = "Fill out all fields";
+          message.innerHTML = error;
           instrument.focus();
           document.getElementById("register").disabled = true;
           return false;
         } else if (location == "") {
-          message.innerHTML = "Fill out all fields";
+          message.innerHTML = error;
           location.focus();
           document.getElementById("register").disabled = true;
           return false;
         } else if (room == "") {
-          message.innerHTML = "Fill out all fields";
+          message.innerHTML = error;
           room.focus();
           document.getElementById("register").disabled = true;
           return false;
         } else if (time_slot.selected) {
-          message.innerHTML = "Fill out all fields";
+          message.innerHTML = error;
           time_slot.focus();
           document.getElementById("register").disabled = true;
           return false;
         } else {
           document.getElementById("register").disabled = false;
+          document.getElementById('message').innerHTML = ""
           return true;
         }
       }
-
-      function updateDisplay() {
-        if (validateInput()) {
+      //This will gather the information from the form, and submit it to php program to append to the data.txt file.  
+      function updateRegisteredData() {
+        if (holyCrapIThinkIOverDidTheValidation()) {
           let pType = document.getElementsByName('performance');
           for (i = 0; i < pType.length; i++) {
             if (pType[i].checked) {
               var performance = pType[i].value;
             }
           }
+
           let first_name = document.getElementById('first_name').value;
           let last_name = document.getElementById('last_name').value;
           let student_id = document.getElementById('student_id').value;
-          let fn_2 = document.getElementById('first_name_2');
-          if (fn_2 != null) {
-            var first_name_2 = fn_2.value;
+
+          let second_student = document.getElementById('first_name_2');
+          if (second_student != null) {
+            var first_name_2 = second_student.value;
             var last_name_2 = document.getElementById('last_name_2').value;
             var student_id_2 = document.getElementById('student_id_2').value;
           }
@@ -341,7 +312,6 @@
 
           var xhttp = new XMLHttpRequest();
           xhttp.onreadystatechange = function () {
-            console.log(xhttp);
             if (this.readyState == 4 && this.status == 200) {
               let response = this.responseText.split("\n");
               for (let i = 0; i < response.length - 1; i++) {
@@ -371,8 +341,8 @@
           xhttp.send(vars);
         }
       }
-
-      function loadDisplay() {
+      //If there is data in the /data/data.txt file it will load when the page loads, showing current registrations.
+      function loadRegisteredData() {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
           if (this.readyState == 4 && this.status == 200) {
@@ -401,7 +371,7 @@
             exit;
           }
         };
-        xhttp.open("POST", "data/students.txt", true);
+        xhttp.open("POST", "data/data.txt", true);
         xhttp.send();
       }
     </script>
