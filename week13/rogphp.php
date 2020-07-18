@@ -1,5 +1,5 @@
 <?php
-$fileName = "data/students.txt";
+$fileName = "data/data.txt";
 
 // if updating display
 if (isset($_POST['performance'])){

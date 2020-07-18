@@ -254,6 +254,6 @@ function loadDisplay() {
           exit;
       }
   };
-  xhttp.open("POST", "data/students.txt", true);
+  xhttp.open("POST", "data/data.txt", true);
   xhttp.send();
 }
